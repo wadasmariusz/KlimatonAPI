@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using ThreatMap.Application.Shared.Common.Services;
 using ThreatMap.Application.User.Queries.GetReportList;
+using ThreatMap.Domain.Common.Enums;
 using ThreatMap.Domain.Reports.Entities;
 using ThreatMap.Persistence;
 using ThreatMap.Shared.Extensions;
@@ -10,18 +12,23 @@ namespace ThreatMap.Infrastructure.Queries.User.Reports;
 
 public class GetReportListQueryHandler : IRequestHandler<GetReportListQuery, PaginatedList<GetReportListQueryVm>>
 {
+    private readonly ICurrentUserService _currentUserService;
     private readonly DbSet<Report> _reports;
-    public GetReportListQueryHandler(ThreatMapDbContext context)
+
+    public GetReportListQueryHandler(ThreatMapDbContext context, ICurrentUserService currentUserService)
     {
+        _currentUserService = currentUserService;
         _reports = context.Reports;
     }
-    
-    public async Task<PaginatedList<GetReportListQueryVm>> Handle(GetReportListQuery request, CancellationToken cancellationToken)
+
+    public async Task<PaginatedList<GetReportListQueryVm>> Handle(GetReportListQuery request,
+        CancellationToken cancellationToken)
     {
-        var query = _reports.AsQueryable(); // here includes
+        var currentUserId = _currentUserService.UserId;
+        var query = _reports.Where(a => a.Status == Status.Active && a.UserId == currentUserId ); // here includes
         if (!string.IsNullOrEmpty(request.SearchPhrase))
         {
-             query = query.Where(a => EF.Functions.ILike(a.Description, request.SearchPhrase));
+            query = query.Where(a => EF.Functions.ILike(a.Description, request.SearchPhrase));
         }
 
         var vm = await query.Select(a => new GetReportListQueryVm()

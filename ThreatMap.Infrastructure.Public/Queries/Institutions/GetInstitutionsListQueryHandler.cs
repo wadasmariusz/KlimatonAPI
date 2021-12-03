@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using ThreatMap.Application.Public.Queries.GetInstitutionsList;
+using ThreatMap.Application.Public.Queries.Institutions.GetInstitutionsList;
 using ThreatMap.Domain.Institutions.Entities;
 using ThreatMap.Persistence;
 

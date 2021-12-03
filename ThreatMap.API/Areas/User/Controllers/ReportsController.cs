@@ -10,7 +10,7 @@ using ThreatMap.Domain.Identity.Static;
 
 namespace ThreatMap.API.Areas.User.Controllers;
 
-[Route("reports")]
+[Route("user/reports")]
 // [ApiAuthorize(Roles = UserRoles.User)]
 public class ReportsController : BaseController
 {

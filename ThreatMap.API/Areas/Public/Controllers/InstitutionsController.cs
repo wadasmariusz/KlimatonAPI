@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ThreatMap.Application.Public.Queries.GetInstitutionsList;
+using ThreatMap.Application.Public.Queries.Institutions.GetInstitutionsList;
 
 namespace ThreatMap.API.Areas.Public.Controllers;
 
