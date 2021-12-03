@@ -18,6 +18,7 @@ public static class Extensions
         services.AddScoped<IIdentityService, IdentityService>();
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IDateService, DateService>();
+        services.AddScoped<IInstitutionRepository, InstitutionRepository>();
         services.AddScoped<IReportRepository, ReportRepository>();
 
         return services;

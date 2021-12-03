@@ -10,4 +10,8 @@
       <ProjectReference Include="..\ThreatMap.Domain\ThreatMap.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="MappingGenerator" Version="2021.10.32" />
+    </ItemGroup>
+
 </Project>
