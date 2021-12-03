@@ -15,7 +15,7 @@ namespace ThreatMap.API.Areas.User.Controllers;
 public class ReportsController : BaseController
 {
     [HttpGet]
-    public async Task<ActionResult> GetReportList([FromBody]GetReportListQuery query)
+    public async Task<ActionResult> GetReportList([FromQuery]GetReportListQuery query)
     {
         var response = await Mediator.Send(query);
         return Ok(response);
@@ -31,7 +31,7 @@ public class ReportsController : BaseController
     [HttpPost("create")]
     public async Task<ActionResult> CreateReport([FromBody]CreateReportCommand command)
     {
-        var id = await Mediator.Send(command);
+        await Mediator.Send(command);
         return Ok();
     }
     
