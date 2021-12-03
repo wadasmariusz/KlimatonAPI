@@ -2,8 +2,11 @@
 
 namespace ThreatMap.Application.User.Commands.UpdateReport;
 
-public class UpdateReportCommand : IRequest
+public class UpdateReportCommand : IRequest<long>
 {
     public long reportId { get; set; }
-    // Tutaj mają być dane zgłoszenia
+    
+    public string Title { get; set; }
+    public string Description { get; set; }
+    public DateTimeOffset? ReportDate { get; set; }
 }

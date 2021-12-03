@@ -6,7 +6,7 @@ using ThreatMap.Domain.Reports.Entities;
 
 namespace ThreatMap.Application.User.Commands.UpdateReport;
 
-public class UpdateReportCommandHandler : IRequestHandler<CreateReportCommand, long>
+public class UpdateReportCommandHandler : IRequestHandler<UpdateReportCommand, long>
 {
     private readonly IReportRepository _reportRepository;
     private readonly IDateService _dateService;
@@ -18,15 +18,16 @@ public class UpdateReportCommandHandler : IRequestHandler<CreateReportCommand, l
         _dateService = dateService;
         _userService = userService;
     }
-    public async Task<long> Handle(CreateReportCommand request, CancellationToken cancellationToken)
+    public async Task<long> Handle(UpdateReportCommand request, CancellationToken cancellationToken)
     {
         var report = new Report()
         {
-            Description = $"Zalało mi dom help fast jaknajszybciej",
-            ReportDate = _dateService.CurrentOffsetDate(),
+            Title = request.Title,
+            Description = request.Description,
+            ReportDate = request.ReportDate,
         };
 
-        await _reportRepository.CreateAsync(report);
+        await _reportRepository.UpdateAsync(report);
         
         return report.Id;
     }

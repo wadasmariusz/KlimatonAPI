@@ -5,6 +5,6 @@ namespace ThreatMap.Application.Shared.Common.Services;
 public interface ICurrentUserService
 {
     string Email { get;  }
-    string UserId { get;  }
+    long UserId { get;  }
     public ClaimsPrincipal User { get; }
 }
