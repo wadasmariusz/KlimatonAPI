@@ -50,7 +50,7 @@ namespace ThreatMap.API.Areas.Public.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{sensorId}/data")]
+        [HttpGet("{sensorId}")]
         public async Task<ActionResult> GetSensor([FromQuery] GetSensorQuery query, long sensorId)
         {
             //var response = Mediator.Send(query);

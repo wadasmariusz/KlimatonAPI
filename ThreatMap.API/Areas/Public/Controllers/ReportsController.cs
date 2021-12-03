@@ -3,7 +3,7 @@ using ThreatMap.Application.User.Queries.Reports.GetReportList;
 
 namespace ThreatMap.API.Areas.Public.Controllers;
 
-[Microsoft.AspNetCore.Components.Route("reports")]
+[Route("reports")]
 // [ApiAuthorize(Roles = UserRoles.User)]
 public class ReportsController : BaseController
 {
