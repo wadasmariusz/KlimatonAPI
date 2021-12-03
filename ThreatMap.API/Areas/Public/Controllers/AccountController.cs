@@ -16,10 +16,10 @@ public class AccountController : BaseController
 {
     private readonly IIdentityService _identityService;
     private readonly RoleManager<IdentityRole<long>> _roleManager;
-    private readonly UserManager<User> _userManager;
+    private readonly UserManager<Domain.Identity.Entities.User> _userManager;
 
     public AccountController(IIdentityService identityService, RoleManager<IdentityRole<long>> roleManager,
-        UserManager<User> userManager)
+        UserManager<Domain.Identity.Entities.User> userManager)
     {
         _identityService = identityService;
         _roleManager = roleManager;
@@ -113,7 +113,7 @@ public class AccountController : BaseController
             }
         }
 
-        var admin = new User()
+        var admin = new Domain.Identity.Entities.User()
         {
             UserName = "admin@threatmap.com",
             Email = "admin@threatmap.com",
