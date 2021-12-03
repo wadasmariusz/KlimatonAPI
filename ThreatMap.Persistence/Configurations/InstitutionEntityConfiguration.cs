@@ -13,7 +13,11 @@ public class InstitutionEntityConfiguration : IEntityTypeConfiguration<Instituti
         builder.OwnsOne(a => a.Location)
             .Property(a => a.Latitude)
             .HasColumnName("Latitude");
-            
+        
+        builder.OwnsOne(a => a.Location)
+            .Property(a => a.Altitude)
+            .HasColumnName("Altitude");
+
         builder.OwnsOne(a => a.Location)
             .Property(a => a.Longitude)
             .HasColumnName("Longitude");

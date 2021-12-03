@@ -9,6 +9,7 @@ using ThreatMap.Domain.Common.Enums;
 using ThreatMap.Domain.Identity.Entities;
 using ThreatMap.Domain.Institutions.Entities;
 using ThreatMap.Domain.Reports.Entities;
+using ThreatMap.Domain.Sensors.Entities;
 
 namespace ThreatMap.Persistence;
 
@@ -30,7 +31,9 @@ public class ThreatMapDbContext : IdentityDbContext<User, IdentityRole<long>, lo
 
     public DbSet<Report> Reports { get; set; }
     public DbSet<Institution> Institutions { get; set; }
-    
+    public DbSet<Sensor> Sensors { get; set; }
+    public DbSet<SensorData> SensorData { get; set; }
+ 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ThreatMapDbContext).Assembly);

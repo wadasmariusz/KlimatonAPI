@@ -4,16 +4,17 @@ public record Location
 {
     public double Latitude { get; }
     public double Longitude { get; }
-    public double Altitude { get; }
-    
-    protected Location()
-    {
-    }
+    public double? Altitude { get; }
 
-    public Location(double latitude, double longitude, double altitude)
+    private Location(double latitude, double longitude, double? altitude)
     {
         Latitude = latitude;
         Longitude = longitude;
         Altitude = altitude;
+    }
+
+    public static Location Create(double latitude, double longitude, double? altitude)
+    {
+        return new Location(latitude, longitude, altitude);
     }
 }

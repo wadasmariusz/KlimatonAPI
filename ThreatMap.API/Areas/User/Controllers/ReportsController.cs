@@ -4,6 +4,7 @@ using ThreatMap.API.Attributes;
 using ThreatMap.Application.User.Commands.CreateReport;
 using ThreatMap.Application.User.Commands.DeleteReport;
 using ThreatMap.Application.User.Commands.UpdateReport;
+using ThreatMap.Application.User.Queries.GetReport;
 using ThreatMap.Application.User.Queries.GetReportList;
 using ThreatMap.Domain.Identity.Static;
 
@@ -17,6 +18,13 @@ public class ReportsController : BaseController
     public async Task<ActionResult> GetReportList([FromBody]GetReportListQuery query)
     {
         var response = await Mediator.Send(query);
+        return Ok(response);
+    }
+    
+    [HttpGet("{reportId:long}")]
+    public async Task<ActionResult> GetReport(long reportId)
+    {
+        var response = await Mediator.Send(new GetReportQuery {ReportId = reportId});
         return Ok(response);
     }
     
@@ -38,7 +46,7 @@ public class ReportsController : BaseController
     [HttpDelete("{reportId:long}/delete")]
     public async Task<ActionResult> DeleteReport(long reportId)
     {
-        await Mediator.Send(new DeleteReportCommand() {ReportId = reportId});
+        await Mediator.Send(new DeleteReportCommand {ReportId = reportId});
         return NoContent();
     }
 }

@@ -8,16 +8,17 @@ public record Address
     public string Country { get; }
     public string ZipCode { get; }
 
-    protected Address()
+    private Address(string number, string street, string city, string country, string zipCode)
     {
-    }
-
-    public Address(string country, string number, string zipcode, string city, string street)
-    {
+        Number = number;
         Street = street;
         City = city;
-        Number = number;
         Country = country;
-        ZipCode = zipcode;
+        ZipCode = zipCode;
+    }
+
+    public static Address Create(string country, string number, string zipcode, string city, string street, string zipCode)
+    {
+        return new Address(number, street, city, country, zipcode);
     }
 }
