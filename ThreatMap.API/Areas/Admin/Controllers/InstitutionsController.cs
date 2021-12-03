@@ -5,7 +5,7 @@ using ThreatMap.Application.Public.Queries.Institutions.GetInstitutionsList;
 
 namespace ThreatMap.API.Areas.Admin.Controllers;
 
-[Route("city-panel/institutions")]
+[Route("admin/institutions")]
 public class InstitutionsController : BaseController
 {
     [HttpGet]

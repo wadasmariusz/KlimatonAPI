@@ -12,7 +12,7 @@ namespace ThreatMap.API.Areas.Admin.Controllers
     public class SensorsController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult> GetSensorList([FromBody] GetSensorListQuery query)
+        public async Task<ActionResult> GetSensorList([FromQuery] GetSensorListQuery query)
         {
             //var response = await Mediator.Send(query);
             //return Ok(response);
@@ -34,7 +34,7 @@ namespace ThreatMap.API.Areas.Admin.Controllers
         }
 
         [HttpGet("{sensorId}/data")]
-        public async Task<ActionResult> GetSensorDataList([FromBody] GetSensorDataListQuery query, long sensorId)
+        public async Task<ActionResult> GetSensorDataList([FromQuery] GetSensorDataListQuery query, long sensorId)
         {
             //var response = Mediator.Send(query);
             //return Ok(response);
