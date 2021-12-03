@@ -7,7 +7,7 @@ namespace ThreatMap.API.Areas.Public.Controllers;
 public class InstitutionsController : BaseController
 {
     [HttpGet]
-    public async Task<ActionResult> GetInstitutionList([FromBody]GetInstitutionListQuery query)
+    public async Task<ActionResult> GetInstitutionList([FromQuery] GetInstitutionListQuery query)
     {
         var response = Mediator.Send(query);
         return Ok(response);

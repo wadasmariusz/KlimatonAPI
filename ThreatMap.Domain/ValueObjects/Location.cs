@@ -13,7 +13,7 @@ public record Location
         Altitude = altitude;
     }
 
-    public static Location Create(double latitude, double longitude, double? altitude)
+    public static Location Create(double latitude, double longitude, double? altitude = null)
     {
         return new Location(latitude, longitude, altitude);
     }
