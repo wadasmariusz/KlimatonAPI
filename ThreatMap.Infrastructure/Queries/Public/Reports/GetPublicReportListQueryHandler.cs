@@ -1,37 +1,37 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using ThreatMap.Application.Public.Queries.Reports.GetReportList;
 using ThreatMap.Application.Shared.Common.Services;
-using ThreatMap.Application.User.Queries.Reports.GetReportList;
 using ThreatMap.Domain.Common.Enums;
 using ThreatMap.Domain.Reports.Entities;
 using ThreatMap.Persistence;
 using ThreatMap.Shared.Extensions;
 using ThreatMap.Shared.Models;
 
-namespace ThreatMap.Infrastructure.Queries.User.Reports;
+namespace ThreatMap.Infrastructure.Queries.Public.Reports;
 
-public class GetReportListQueryHandler : IRequestHandler<GetReportListQuery, PaginatedList<GetReportListQueryVm>>
+public class GetPublicReportListQueryHandler : IRequestHandler<GetPublicReportListQuery, PaginatedList<GetPublicReportListQueryVm>>
 {
-    private readonly ICurrentUserService _currentUserService;
+    
     private readonly DbSet<Report> _reports;
 
-    public GetReportListQueryHandler(ThreatMapDbContext context, ICurrentUserService currentUserService)
+    public GetPublicReportListQueryHandler(ThreatMapDbContext context)
     {
-        _currentUserService = currentUserService;
+        
         _reports = context.Reports;
     }
 
-    public async Task<PaginatedList<GetReportListQueryVm>> Handle(GetReportListQuery request,
+    public async Task<PaginatedList<GetPublicReportListQueryVm>> Handle(GetPublicReportListQuery request,
         CancellationToken cancellationToken)
     {
-        var currentUserId = _currentUserService.UserId;
-        var query = _reports.Where(a => a.Status == Status.Active && a.UserId == currentUserId ); // here includes
+        
+        var query = _reports.Where(a => a.Status == Status.Active ); // here includes
         if (!string.IsNullOrEmpty(request.SearchPhrase))
         {
             query = query.Where(a => EF.Functions.ILike(a.Description, request.SearchPhrase));
         }
 
-        var vm = await query.Select(a => new GetReportListQueryVm()
+        var vm = await query.Select(a => new GetPublicReportListQueryVm()
         {
             Description = a.Description,
             Title = a.Title,

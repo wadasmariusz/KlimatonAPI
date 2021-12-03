@@ -28,7 +28,6 @@
     
     <ItemGroup>
       <Folder Include="Queries\Admin" />
-      <Folder Include="Queries\Public" />
     </ItemGroup>
 
 </Project>

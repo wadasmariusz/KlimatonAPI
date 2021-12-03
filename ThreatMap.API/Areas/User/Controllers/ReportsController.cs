@@ -4,8 +4,8 @@ using ThreatMap.API.Attributes;
 using ThreatMap.Application.User.Commands.CreateReport;
 using ThreatMap.Application.User.Commands.DeleteReport;
 using ThreatMap.Application.User.Commands.UpdateReport;
-using ThreatMap.Application.User.Queries.GetReport;
-using ThreatMap.Application.User.Queries.GetReportList;
+using ThreatMap.Application.User.Queries.Reports.GetReport;
+using ThreatMap.Application.User.Queries.Reports.GetReportList;
 using ThreatMap.Domain.Identity.Static;
 
 namespace ThreatMap.API.Areas.User.Controllers;

@@ -1,4 +1,4 @@
-﻿namespace ThreatMap.Application.User.Queries.GetReportList;
+﻿namespace ThreatMap.Application.User.Queries.Reports.GetReportList;
 
 public class GetReportListQueryVm
 {

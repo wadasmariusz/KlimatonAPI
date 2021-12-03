@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ThreatMap.Application.User.Queries.GetReportList;
+using ThreatMap.Application.User.Queries.Reports.GetReportList;
 
 namespace ThreatMap.API.Areas.Public.Controllers;
 

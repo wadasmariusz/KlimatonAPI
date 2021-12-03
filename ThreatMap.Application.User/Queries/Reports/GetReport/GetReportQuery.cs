@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace ThreatMap.Application.User.Queries.GetReport;
+namespace ThreatMap.Application.User.Queries.Reports.GetReport;
 
 public class GetReportQuery : IRequest<GetReportQueryVm>
 {
