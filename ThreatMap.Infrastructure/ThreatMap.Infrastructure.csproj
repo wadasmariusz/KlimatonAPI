@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.14.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.14.1" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\ThreatMap.Application.Admin\ThreatMap.Application.Admin.csproj" />
+      <ProjectReference Include="..\ThreatMap.Application.Public\ThreatMap.Application.Public.csproj" />
+      <ProjectReference Include="..\ThreatMap.Application.Shared\ThreatMap.Application.Shared.csproj" />
+      <ProjectReference Include="..\ThreatMap.Application.User\ThreatMap.Application.User.csproj" />
+      <ProjectReference Include="..\ThreatMap.Persistence\ThreatMap.Persistence.csproj" />
+      <ProjectReference Include="..\ThreatMap.Shared.Abstractions\ThreatMap.Shared.Abstractions.csproj" />
+    </ItemGroup>
+
+</Project>
