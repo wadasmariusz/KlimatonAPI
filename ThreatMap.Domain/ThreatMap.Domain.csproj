@@ -13,7 +13,6 @@
 
     <ItemGroup>
       <Folder Include="Reports\Enums" />
-      <Folder Include="Sensors\Entities\NewFolder\" />
     </ItemGroup>
 
 </Project>

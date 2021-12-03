@@ -7,13 +7,13 @@ using ThreatMap.Domain.Common.Entities;
 
 namespace ThreatMap.Domain.Sensors.Entities
 {
-    public class SensorDataM : AuditableEntity
+    public class SensorData : AuditableEntity
     {
 
         public DateTime Date { get; set; }
 
         public long Sensorid { get; set; }
-        public SensorM Sensor { get; set; }
+        public Sensor Sensor { get; set; }
 
         public string Humidity { get; set; }
         public string Temperature { get; set; }

@@ -8,7 +8,7 @@ using ThreatMap.Domain.Sensors.Enums;
 
 namespace ThreatMap.Domain.Sensors.Entities
 {
-    public class SensorM : AuditableEntity
+    public class Sensor : AuditableEntity
     {
         public string Name { get; set; }
         public SensorCategoryE Category { get; set; }
