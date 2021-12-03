@@ -25,5 +25,10 @@
       <ProjectReference Include="..\ThreatMap.Persistence\ThreatMap.Persistence.csproj" />
       <ProjectReference Include="..\ThreatMap.Shared.Abstractions\ThreatMap.Shared.Abstractions.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="Queries\Admin" />
+      <Folder Include="Queries\Public" />
+    </ItemGroup>
 
 </Project>

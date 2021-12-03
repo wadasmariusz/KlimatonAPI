@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\ThreatMap.Application.Shared\ThreatMap.Application.Shared.csproj" />
       <ProjectReference Include="..\ThreatMap.Domain\ThreatMap.Domain.csproj" />
       <ProjectReference Include="..\ThreatMap.Shared.Abstractions\ThreatMap.Shared.Abstractions.csproj" />
       <ProjectReference Include="..\ThreatMap.Shared\ThreatMap.Shared.csproj" />

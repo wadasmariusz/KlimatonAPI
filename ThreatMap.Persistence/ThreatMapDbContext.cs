@@ -7,6 +7,7 @@ using ThreatMap.Domain;
 using ThreatMap.Domain.Common.Entities;
 using ThreatMap.Domain.Common.Enums;
 using ThreatMap.Domain.Identity.Entities;
+using ThreatMap.Domain.Reports.Entities;
 
 namespace ThreatMap.Persistence;
 
@@ -25,6 +26,8 @@ public class ThreatMapDbContext : IdentityDbContext<User, IdentityRole<long>, lo
         _dateTimeOffset = dateTimeOffset;
         _currentUserService = currentUserService;
     }
+
+    public DbSet<Report> Reports { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

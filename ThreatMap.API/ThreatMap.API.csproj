@@ -31,4 +31,9 @@
         </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Areas\Admin" />
+      <Folder Include="Areas\Public" />
+    </ItemGroup>
+
 </Project>

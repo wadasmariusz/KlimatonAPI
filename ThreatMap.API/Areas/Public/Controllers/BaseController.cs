@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ThreatMap.API.Controllers;
+namespace ThreatMap.API.Areas.Public.Controllers;
 
 [ApiController]
 public class BaseController : ControllerBase

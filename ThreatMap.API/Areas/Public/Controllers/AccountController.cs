@@ -8,7 +8,8 @@ using ThreatMap.Application.Shared.Common.Identity;
 using ThreatMap.Domain.Identity.Entities;
 using ThreatMap.Domain.Identity.Static;
 
-namespace ThreatMap.API.Controllers;
+namespace ThreatMap.API.Areas.Public.Controllers;
+
 [Route("account")]
 [ApiAuthorize(Roles = UserRoles.User)]
 public class AccountController : BaseController
@@ -16,6 +17,7 @@ public class AccountController : BaseController
     private readonly IIdentityService _identityService;
     private readonly RoleManager<IdentityRole<long>> _roleManager;
     private readonly UserManager<User> _userManager;
+
     public AccountController(IIdentityService identityService, RoleManager<IdentityRole<long>> roleManager,
         UserManager<User> userManager)
     {
@@ -24,12 +26,11 @@ public class AccountController : BaseController
         _userManager = userManager;
     }
 
-    
+
     [HttpPost("sign-in")]
     [AllowAnonymous]
     public async Task<ActionResult<JsonWebToken>> SignIn([FromBody] SignInDto dto)
     {
-        
         var jwt = await _identityService.SignInAsync(dto);
         SetTokenCookie(jwt.RefreshToken);
         return Ok(jwt);
@@ -77,7 +78,6 @@ public class AccountController : BaseController
 
     private void SetTokenCookie(string token)
     {
-        // append cookie with refresh token to the http response
         var cookieOptions = new CookieOptions
         {
             HttpOnly = true,
@@ -104,7 +104,7 @@ public class AccountController : BaseController
                 var newRole = new IdentityRole<long>(role);
                 var res = await _roleManager
                     .CreateAsync(
-                        newRole); // Ask : There is possibility to check if creating new role was succeed. If not throw exception
+                        newRole);
 
                 if (!res.Succeeded)
                 {
@@ -115,10 +115,8 @@ public class AccountController : BaseController
 
         var admin = new User()
         {
-            UserName = "kamil@gmail.com",
-            Email = "kamil@gmail.com",
-            FirstName = "Kamil",
-            LastName = "Gro",
+            UserName = "admin@threatmap.com",
+            Email = "admin@threatmap.com",
             EmailConfirmed = true
         };
 
