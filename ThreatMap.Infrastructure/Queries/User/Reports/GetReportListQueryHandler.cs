@@ -16,7 +16,7 @@ public class GetReportListQueryHandler : IRequestHandler<GetReportListQuery, Get
     
     public async Task<GetReportListQueryVm> Handle(GetReportListQuery request, CancellationToken cancellationToken)
     {
-        _reports.Where() // tutaj całe zapytanie zajebiste z filtrami z requesta.
+        // _reports.Where() // tutaj całe zapytanie zajebiste z filtrami z requesta.
 
         return new GetReportListQueryVm();
     }

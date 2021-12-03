@@ -7,6 +7,7 @@ using ThreatMap.Domain;
 using ThreatMap.Domain.Common.Entities;
 using ThreatMap.Domain.Common.Enums;
 using ThreatMap.Domain.Identity.Entities;
+using ThreatMap.Domain.Institutions.Entities;
 using ThreatMap.Domain.Reports.Entities;
 
 namespace ThreatMap.Persistence;
@@ -28,6 +29,7 @@ public class ThreatMapDbContext : IdentityDbContext<User, IdentityRole<long>, lo
     }
 
     public DbSet<Report> Reports { get; set; }
+    public DbSet<Institution> Institutions { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
