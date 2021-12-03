@@ -1,9 +1,7 @@
 using MediatR;
 using ThreatMap.Application.Shared.Common.Services;
 using ThreatMap.Application.Shared.Repositories;
-using ThreatMap.Domain.Common.Enums;
 using ThreatMap.Domain.Institutions.Entities;
-using ThreatMap.Domain.Institutions.Enums;
 using ThreatMap.Domain.ValueObjects;
 
 namespace ThreatMap.Application.Admin.Institutions.Commands.CreateInstitution;
@@ -20,6 +18,7 @@ public class CreateInstitutionCommandHandler : IRequestHandler<CreateInstitution
         _dateService = dateService;
         _userService = userService;
     }
+    
     public async Task<long> Handle(CreateInstitutionCommand req, CancellationToken cancellationToken)
     {
         var institution = new Institution

@@ -13,12 +13,12 @@ public class CreateInstitutionCommand : IRequest<long>
     public string ContactEmail { get; set; }
     public string ContactPhone { get; set; }
 
-    public string Number { get; }
-    public string Street { get; }
-    public string City { get; }
-    public string Country { get; }
-    public string ZipCode { get; }
+    public string Number { get; set; }
+    public string Street { get; set; }
+    public string City { get; set; }
+    public string Country { get; set; }
+    public string ZipCode { get; set; }
     
-    public double Latitude { get; }
-    public double Longitude { get; }
+    public double Latitude { get; set; }
+    public double Longitude { get; set; }
 }
