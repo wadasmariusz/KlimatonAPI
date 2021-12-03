@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -135,6 +136,8 @@ public class AccountController : BaseController
         {
             result = await _userManager.AddToRoleAsync(admin, UserRoles.Admin);
             result = await _userManager.AddToRoleAsync(admin, UserRoles.User);
+
+            await _userManager.AddClaimAsync(admin, new Claim("email", admin.Email));
         }
         else
         {

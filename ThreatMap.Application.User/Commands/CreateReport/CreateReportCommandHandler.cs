@@ -21,8 +21,10 @@ public class CreateReportCommandHandler : IRequestHandler<CreateReportCommand, l
     {
         var report = new Report()
         {
-            Description = $"Zalało mi dom help fast jaknajszybciej",
-            ReportDate = _dateService.CurrentOffsetDate(),
+            Title = request.Title,
+            Description = request.Description,
+            ReportDate = request.ReportDate,
+            UserId = _userService.UserId
         };
 
         await _reportRepository.CreateAsync(report);

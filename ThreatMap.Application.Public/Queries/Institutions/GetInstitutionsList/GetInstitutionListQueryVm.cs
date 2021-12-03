@@ -1,6 +1,6 @@
 ﻿using ThreatMap.Domain.Institutions.Entities;
 
-namespace ThreatMap.Application.Public.Queries.GetInstitutionsList;
+namespace ThreatMap.Application.Public.Queries.Institutions.GetInstitutionsList;
 
 public class GetInstitutionListQueryVm
 {

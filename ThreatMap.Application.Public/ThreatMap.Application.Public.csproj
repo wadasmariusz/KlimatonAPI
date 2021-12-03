@@ -17,6 +17,8 @@
 
     <ItemGroup>
       <Folder Include="Commands\" />
+      <Folder Include="Queries\Institutions" />
+      <Folder Include="Queries\Reports" />
     </ItemGroup>
 
 </Project>

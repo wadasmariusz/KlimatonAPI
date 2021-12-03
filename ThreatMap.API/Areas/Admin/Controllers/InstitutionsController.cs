@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ThreatMap.API.Areas.Public.Controllers;
 using ThreatMap.Application.Admin.Institutions.Commands.CreateInstitution;
-using ThreatMap.Application.Public.Queries.GetInstitutionsList;
+using ThreatMap.Application.Public.Queries.Institutions.GetInstitutionsList;
 
 namespace ThreatMap.API.Areas.Admin.Controllers;
 
