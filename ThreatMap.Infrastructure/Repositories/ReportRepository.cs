@@ -23,6 +23,7 @@ public class ReportRepository : IReportRepository
     {
         await _db.Reports.AddAsync(report);
         await _db.SaveChangesAsync();
+
     }
 
     public async Task UpdateAsync(Report report)

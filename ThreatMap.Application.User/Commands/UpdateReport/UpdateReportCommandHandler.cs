@@ -1,17 +1,18 @@
 ﻿using MediatR;
 using ThreatMap.Application.Shared.Common.Services;
 using ThreatMap.Application.Shared.Repositories;
+using ThreatMap.Application.User.Commands.CreateReport;
 using ThreatMap.Domain.Reports.Entities;
 
-namespace ThreatMap.Application.User.Commands.CreateReport;
+namespace ThreatMap.Application.User.Commands.UpdateReport;
 
-public class CreateReportCommandHandler : IRequestHandler<CreateReportCommand, long>
+public class UpdateReportCommandHandler : IRequestHandler<CreateReportCommand, long>
 {
     private readonly IReportRepository _reportRepository;
     private readonly IDateService _dateService;
     private readonly ICurrentUserService _userService;
 
-    public CreateReportCommandHandler(IReportRepository reportRepository, IDateService dateService, ICurrentUserService userService)
+    public UpdateReportCommandHandler(IReportRepository reportRepository, IDateService dateService, ICurrentUserService userService)
     {
         _reportRepository = reportRepository;
         _dateService = dateService;
