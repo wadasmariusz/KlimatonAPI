@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using ThreatMap.API.Areas.Public.Controllers;
+using ThreatMap.Application.Public.Queries.Sensors.GetSensor;
 using ThreatMap.Application.Public.Queries.Sensors.GetSensorDataList;
 using ThreatMap.Application.Public.Queries.Sensors.GetSensorList;
 using ThreatMap.Domain.Sensors.Enums;
@@ -46,6 +47,18 @@ namespace ThreatMap.API.Areas.Public.Controllers
             response.Add(new GetSensorDataListQueryVm { Date = Convert.ToDateTime("2020-09-02 06:00:00"), Humidity = "25%", PM10 = "50%", PM25 = "50%", Sensor = null, Sensorid = 1, Temperature = "19" });
             response.Add(new GetSensorDataListQueryVm { Date = Convert.ToDateTime("2019-09-02 06:00:00"), Humidity = "25%", PM10 = "50%", PM25 = "50%", Sensor = null, Sensorid = 1, Temperature = "19" });
 
+            return Ok(response);
+        }
+
+        [HttpGet("{sensorId}/data")]
+        public async Task<ActionResult> GetSensor([FromQuery] GetSensorQuery query, long sensorId)
+        {
+            //var response = Mediator.Send(query);
+            //return Ok(response);
+
+            //MOCK
+            var loc1 = Location.Create(50.0306738, 21.9984216, null);
+            var response = new GetSensorQueryVm() { Category = SensorCategoryE.AirCondition, Description = "Sensor przy rzece", Location = loc1, Name = "Sensor 1000" };
             return Ok(response);
         }
     }
