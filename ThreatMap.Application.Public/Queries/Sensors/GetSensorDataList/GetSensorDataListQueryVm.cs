@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ThreatMap.Domain.Sensors.Entities;
+﻿using ThreatMap.Domain.Sensors.Entities;
 
-namespace ThreatMap.Application.Public.Queries.GetSensorDataList
+namespace ThreatMap.Application.Public.Queries.Sensors.GetSensorDataList
 {
     public class GetSensorDataListQueryVm
     {
