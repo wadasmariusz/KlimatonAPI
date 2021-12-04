@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using ThreatMap.Application.Public.Sensors.Queries.GetSensorList;
+using ThreatMap.Application.Shared.Common.DTO;
 using ThreatMap.Domain.Sensors.Entities;
 using ThreatMap.Persistence;
 
@@ -24,8 +25,20 @@ public class GetSensorListQueryHandler : IRequestHandler<GetSensorListQuery, Get
                 Name = q.Name,
                 Category = q.Category,
                 Description = q.Description,
-                Location = q.Location,
-                Address = q.Address
+                Location = q.Location == null
+                    ? null
+                    : new LocationDto()
+                    {
+                        Lat = q.Location.Latitude,
+                        Lng = q.Location.Longitude
+                    },
+                Address = q.Address == null? null : new AddressDto
+                {
+                    Number = q.Address.Number,
+                    Street = q.Address.Street,
+                    ZipCode = q.Address.ZipCode,
+                    City = q.Address.City,
+                },
             })
             .ToListAsync(cancellationToken: cancellationToken);
 

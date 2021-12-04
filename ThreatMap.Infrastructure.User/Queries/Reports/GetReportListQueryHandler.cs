@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using ThreatMap.Application.Shared.Common.DTO;
 using ThreatMap.Application.Shared.Common.Services;
 using ThreatMap.Application.User.Queries.Reports.GetReportList;
 using ThreatMap.Domain.Reports.Entities;
@@ -41,10 +42,10 @@ public class GetReportListQueryHandler : IRequestHandler<GetReportListQuery, Pag
                 RaisesCount = a.ReportRaises.Count,
                 Location = a.Location == null
                     ? null
-                    : new GetReportListQueryVm.LocationDTO()
+                    : new LocationDto()
                     {
                         Lat = a.Location.Latitude,
-                        Lng = a.Location.Latitude
+                        Lng = a.Location.Longitude
                     },
                 Comments = a.Comments.Select(q => new GetReportListQueryVm.CommentDTO
                 {

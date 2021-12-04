@@ -1,4 +1,5 @@
-﻿using ThreatMap.Domain.Comments.Entities;
+﻿using ThreatMap.Application.Shared.Common.DTO;
+using ThreatMap.Domain.Comments.Entities;
 using ThreatMap.Domain.ReportRaises.Entities;
 using ThreatMap.Domain.Reports.Enums;
 
@@ -15,16 +16,10 @@ public class GetReportListQueryVm
 
     public ReportStatus ReportStatus { get; set; }
     public string AdminComment { get; set; }
-    public LocationDTO Location { get; set; }
+    public LocationDto Location { get; set; }
     
     public ICollection<CommentDTO> Comments { get; set; } = new List<CommentDTO>();
     public ICollection<ReportRaise> ReportRaises { get; set; } = new List<ReportRaise>();
-    
-    public class LocationDTO
-    {
-        public double Lat { get; set; }
-        public double Lng { get; set; }
-    }
     
     public class CommentDTO
     {

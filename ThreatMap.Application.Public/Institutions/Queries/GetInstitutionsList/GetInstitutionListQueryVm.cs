@@ -1,6 +1,5 @@
-﻿using ThreatMap.Domain.Institutions.Entities;
+﻿using ThreatMap.Application.Shared.Common.DTO;
 using ThreatMap.Domain.Institutions.Enums;
-using ThreatMap.Domain.ValueObjects;
 
 namespace ThreatMap.Application.Public.Institutions.Queries.GetInstitutionsList;
 
@@ -19,19 +18,5 @@ public class GetInstitutionListQueryVm
 
         public AddressDto Address { get; set; }
         public LocationDto Location { get; set; }
-        
-        public class AddressDto
-        {
-            public string Number { get; set; }
-            public string Street { get; set; }
-            public string City { get; set; }
-            public string ZipCode { get; set; }
-        }
-
-        public class LocationDto
-        {
-            public double Lat { get; set; }
-            public double Lng { get; set; }
-        }
     }
 }

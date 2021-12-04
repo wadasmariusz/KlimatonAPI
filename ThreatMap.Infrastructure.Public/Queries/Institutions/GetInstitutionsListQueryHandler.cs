@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using ThreatMap.Application.Public.Institutions.Queries.GetInstitutionsList;
+using ThreatMap.Application.Shared.Common.DTO;
 using ThreatMap.Domain.Institutions.Entities;
 using ThreatMap.Domain.Institutions.Enums;
 using ThreatMap.Persistence;
@@ -26,17 +27,17 @@ public class GetInstitutionsListQueryHandler : IRequestHandler<GetInstitutionLis
                 SchoolUrl = q.SchoolUrl,
                 ContactEmail = q.ContactEmail,
                 ContactPhone = q.ContactPhone,
-                Address = q.Address == null? null : new GetInstitutionListQueryVm.InstitutioDto.AddressDto
+                Address = q.Address == null? null : new AddressDto
                 {
                     Number = q.Address.Number,
                     Street = q.Address.Street,
                     ZipCode = q.Address.ZipCode,
                     City = q.Address.City,
                 },
-                Location = q.Location == null? null : new GetInstitutionListQueryVm.InstitutioDto.LocationDto
+                Location = q.Location == null? null : new LocationDto
                 {
                     Lat = q.Location.Latitude,
-                    Lng = q.Location.Latitude
+                    Lng = q.Location.Longitude
                 }
             })
             .ToListAsync(cancellationToken: cancellationToken);
