@@ -83,7 +83,7 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 app.UseSerilogRequestLogging();
-
+app.UseCors("AllowAll");
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
