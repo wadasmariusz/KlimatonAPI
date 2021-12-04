@@ -11,5 +11,11 @@ public enum InstitutionType
     Kindergarten = 1,
     
     [Display(Name = "Szkoła")]
-    School = 2
+    School = 2,
+    
+    [Display(Name = "OSP")]
+    OSP = 3,
+    
+    [Display(Name = "Filia Domu Kultury")]
+    AgencyOfCultureHouse = 4
 }
