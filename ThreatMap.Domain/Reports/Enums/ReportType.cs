@@ -6,6 +6,7 @@ public enum ReportType : short
     Flood = 2,
     Inundation = 4,
     Air = 6,
-    Others = 8
+    IncompatibleStove = 8,
+    Others = 10
     
 }
