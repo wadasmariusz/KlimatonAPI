@@ -32,14 +32,14 @@ public class ImportReportCommandHandler : IRequestHandler<ImportReportCommand, l
             var report = new Report
             {
                 Title = $"Podtopienie {item.properties.adres}",
-                Description = item.properties.adres,
+                Description = $"Ulica: {item.properties.adres}",
                 ReportType = ReportType.Inundation,
                 ReportStatus = ReportStatus.Finished,
                 Location = Location.Create(item.geometry.coordinates[0], item.geometry.coordinates[1]),
             };
             var reportDate = new DateTime(item.properties.rok, item.properties.miesiac ?? 6, 1);
             report.ReportDate = DateTime.SpecifyKind(reportDate, DateTimeKind.Utc);
-            report.UserId = rnd.Next(2, 5);
+            report.UserId = rnd.Next(1, 5);
             await _reportRepository.CreateAsync(report);
         }
 

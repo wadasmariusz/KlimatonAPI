@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using ThreatMap.Application.Shared.Common.Services;
 using ThreatMap.Application.User.Queries.Reports.GetReportList;
-using ThreatMap.Domain.Common.Enums;
 using ThreatMap.Domain.Reports.Entities;
 using ThreatMap.Persistence;
 using ThreatMap.Shared.Extensions;
@@ -24,8 +23,7 @@ public class GetReportListQueryHandler : IRequestHandler<GetReportListQuery, Pag
     public async Task<PaginatedList<GetReportListQueryVm>> Handle(GetReportListQuery request,
         CancellationToken cancellationToken)
     {
-        var currentUserId = _currentUserService.UserId;
-        var query = _reports.Where(a => a.Status == Status.Active && a.UserId == currentUserId ); // here includes
+        var query = _reports.AsNoTracking();
         if (!string.IsNullOrEmpty(request.SearchPhrase))
         {
             query = query.Where(a => EF.Functions.ILike(a.Description, request.SearchPhrase));
