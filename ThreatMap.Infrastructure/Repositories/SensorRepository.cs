@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using ThreatMap.Application.Shared.Repositories;
 using ThreatMap.Domain.Sensors.Entities;
 using ThreatMap.Persistence;
@@ -11,6 +12,11 @@ public class SensorRepository : ISensorRepository
     public SensorRepository(ThreatMapDbContext db)
     {
         _db = db;
+    }
+
+    public async Task<Sensor> GetByExternalSensorId(string externalId)
+    {
+        return await _db.Sensors.AsNoTracking().FirstOrDefaultAsync(q => q.ExternalId == externalId);
     }
 
     public async Task CreateAsync(Sensor sensor)

@@ -29,8 +29,8 @@ public class ImportSensorCommandHandler : IRequestHandler<ImportSensorCommand, L
                 Name = item.Name,
                 ExternalId = item.ExternalId,
                 Description = item.Description,
-                Address = item.Address,
-                Location = Location.Create(item.Latitude, item.Longitude)
+                Address = Address.Create(item.Number,  item.Street, item.City,  item.ZipCode),
+                Location = Location.Create(item.Latitude, item.Longitude, item.Altitude)
             };
             await _sensorRepository.CreateAsync(sensor);
             addedSensor.Add(sensor);

@@ -31,7 +31,7 @@ public class ImportInstitutionCommandHandler : IRequestHandler<ImportInstitution
                 SchoolUrl = item.SchoolUrl,
                 ContactEmail = item.ContactEmail,
                 ContactPhone = item.ContactPhone,
-                Address = Address.Create("Polska", item.Number, item.ZipCode, item.City, item.Street, item.ZipCode),
+                Address = Address.Create(item.Number, item.Street, item.City, item.ZipCode),
                 Location = Location.Create(item.Latitude, item.Longitude)
             };
             await _institutionRepository.CreateAsync(institution);

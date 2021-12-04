@@ -27,7 +27,7 @@ public class CreateSensorCommandHandler : IRequestHandler<CreateSensorCommand, l
             ExternalId = req.ExternalId,
             Description = req.Description,
             Category = req.Category,
-            Address = req.Address,
+            Address = Address.Create(req.Number,  req.Street, req.City,  req.ZipCode),
             Location = Location.Create(req.Latitude, req.Longitude, req.Altitude)
         };
 

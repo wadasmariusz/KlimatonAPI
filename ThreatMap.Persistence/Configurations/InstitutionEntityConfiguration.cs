@@ -33,11 +33,7 @@ public class InstitutionEntityConfiguration : IEntityTypeConfiguration<Instituti
         builder.OwnsOne(a => a.Address)
             .Property(a => a.City)
             .HasColumnName("City");
-            
-        builder.OwnsOne(a => a.Address)
-            .Property(a => a.Country)
-            .HasColumnName("Country");
-            
+
         builder.OwnsOne(a => a.Address)
             .Property(a => a.ZipCode)
             .HasColumnName("ZipCode");

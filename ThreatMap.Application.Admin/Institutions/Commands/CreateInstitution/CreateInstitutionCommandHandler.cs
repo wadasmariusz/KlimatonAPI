@@ -29,7 +29,7 @@ public class CreateInstitutionCommandHandler : IRequestHandler<CreateInstitution
             SchoolUrl = req.SchoolUrl,
             ContactEmail = req.ContactEmail,
             ContactPhone = req.ContactPhone,
-            Address = Address.Create(req.Country, req.Number, req.ZipCode, req.City, req.Street, req.ZipCode),
+            Address = Address.Create(req.Number, req.Street, req.City, req.ZipCode),
             Location = Location.Create(req.Latitude, req.Longitude)
         };
 

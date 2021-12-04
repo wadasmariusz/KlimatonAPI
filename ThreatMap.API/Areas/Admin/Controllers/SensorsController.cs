@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Globalization;
+using CsvHelper;
+using Microsoft.AspNetCore.Mvc;
 using ThreatMap.AirlyAPI.Services;
 using ThreatMap.API.Areas.Public.Controllers;
 using ThreatMap.Application.Admin.Sensors.Commands.CreateSensor;
+using ThreatMap.Application.Admin.Sensors.Commands.CreateSensorList;
 using ThreatMap.Application.Admin.Sensors.Commands.ImportSensor;
 using ThreatMap.Application.Public.Sensors.Queries.GetSensorDataList;
 using ThreatMap.Application.Public.Sensors.Queries.GetSensorList;
@@ -48,11 +51,53 @@ namespace ThreatMap.API.Areas.Admin.Controllers
         {
             var id = await Mediator.Send(command);
             return Ok();
+        }     
+        
+        [HttpPost("import-list")]
+        public async Task<ActionResult> CreateSensor([FromBody] CreateSensorListCommand command)
+        {
+            var id = await Mediator.Send(command);
+            return Ok();
         }
         
-        [HttpPost("import")]
-        public async Task<ActionResult> ImportSensor([FromBody] ImportSensorCommand command)
+        [HttpPost("import-data-csv")]
+        public async Task<IActionResult> UploadSensorCSVList([FromForm] IFormFile file)
         {
+            List<SensorCSV> records = new List<SensorCSV>();
+            if (file.Length > 0)
+            {
+                using (var reader = new StreamReader(file.OpenReadStream()))
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    records = csv.GetRecords<SensorCSV>().ToList();
+                }
+            }
+
+            var command = new ImportSensorCommand()
+            {
+                Sensors = records
+            };
+            var id = await Mediator.Send(command);
+            return Ok();
+        }
+        
+        [HttpPost("import-data")]
+        public async Task<IActionResult> UploadSensorList([FromBody] IFormFile file)
+        {
+            List<SensorCSV> records = new List<SensorCSV>();
+            if (file.Length > 0)
+            {
+                using (var reader = new StreamReader(file.OpenReadStream()))
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    records = csv.GetRecords<SensorCSV>().ToList();
+                }
+            }
+
+            var command = new ImportSensorCommand()
+            {
+                Sensors = records
+            };
             var id = await Mediator.Send(command);
             return Ok();
         }
