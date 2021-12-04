@@ -32,19 +32,26 @@ public class GetReportListQueryHandler : IRequestHandler<GetReportListQuery, Pag
         var vm = await query
             .Include(q => q.Comments).ThenInclude(q => q.User)
             .Select(a => new GetReportListQueryVm()
-        {
-            Description = a.Description,
-            Title = a.Title,
-            ReportDate = a.ReportDate,
-            UserId = a.UserId,
-            CommentsCount = a.Comments.Count,
-            RaisesCount = a.ReportRaises.Count,
-            Comments = a.Comments.Select(q => new GetReportListQueryVm.CommentDTO
             {
-                Content = q.Content,
-                UserFirstName = q.User.FirstName
-            }).ToList()
-        }).PaginatedListAsync(request);
+                Description = a.Description,
+                Title = a.Title,
+                ReportDate = a.ReportDate,
+                UserId = a.UserId,
+                CommentsCount = a.Comments.Count,
+                RaisesCount = a.ReportRaises.Count,
+                Location = a.Location == null
+                    ? null
+                    : new GetReportListQueryVm.LocationDTO()
+                    {
+                        Lat = a.Location.Latitude,
+                        Lng = a.Location.Latitude
+                    },
+                Comments = a.Comments.Select(q => new GetReportListQueryVm.CommentDTO
+                {
+                    Content = q.Content,
+                    UserFirstName = q.User.FirstName
+                }).ToList()
+            }).PaginatedListAsync(request);
 
         return vm;
     }
