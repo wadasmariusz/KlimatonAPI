@@ -62,7 +62,6 @@ builder.Services.AddInfrastructure();
 builder.Services.AddUserInfrastructure();
 builder.Services.AddPublicInfrastructure();
 
-// Pytanie czy dać Application dostęp do tych poniższych i wtedy po prostu użyć jednego wywowałnia AddApplication.
 builder.Services.AddApplication();
 builder.Services.AddApplicationAdmin();
 builder.Services.AddApplicationPublic();

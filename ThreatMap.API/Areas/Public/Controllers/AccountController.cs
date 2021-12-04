@@ -96,6 +96,7 @@ public class AccountController : BaseController
         {
             UserRoles.Admin,
             UserRoles.User,
+            UserRoles.Dev,
         };
 
         foreach (var role in roles)

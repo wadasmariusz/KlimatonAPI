@@ -1,0 +1,17 @@
+﻿.btn-sort {
+    cursor: pointer
+}
+
+label.label-search {
+    color: #9F9F9F
+}
+
+.table-custom-sm td {
+    padding: 0.25rem;
+    font-size: 10px;
+}
+
+.table-custom-sm th {
+    padding: 0.25rem;
+    font-size: 10px;
+}

@@ -1,0 +1,55 @@
+﻿@model ThreatMap.Admin.ViewModels.Account.LoginVM;
+@{
+    ViewBag.Title = "Logowanie";
+}
+
+<div class="container-fluid my-5">
+    <div class="row justify-content-center">
+        <div class="col-4">
+
+            <div class="card">
+                <form method="post">
+
+                    <div class="card-header text-center">
+                        <h3>Logowanie</h3>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="mb-3 row">
+                            <div class="col">
+                                <input type="text" class="form-control" asp-for="Email" placeholder="Email">
+                            </div>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col">
+                                <input type="password" class="form-control" asp-for="Password" placeholder="Hasło">
+                            </div>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+
+
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" asp-for="RememberMe">
+                            <label class="form-check-label" asp-for="RememberMe">
+                                Zapamiętaj mnie
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <div class="card-footer text-center">
+
+                        <button class="btn btn-primary" style="width: 100%">Zaloguj się</button>
+
+                    </div>
+                </form>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
