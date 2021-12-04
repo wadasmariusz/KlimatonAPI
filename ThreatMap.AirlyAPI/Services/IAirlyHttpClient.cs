@@ -8,8 +8,8 @@ namespace ThreatMap.AirlyAPI.Services
 {
     public interface IAirlyHttpClient
     {
-        Task<string> GetData();
-        Task<string> GetMeasuresFromNearestAreaRzeszow();
-        Task<string> GetMeasuresFromSensor(int locationId);
+        Task<string> GetMeasureFromPoint(double? latitude, double? longitude);
+        //Task<string> GetInstallationsNearestAreaRzeszow();
+        Task UpdateSensorsData(int locationId);
     }
 }

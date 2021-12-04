@@ -14,6 +14,11 @@ public class Report : AuditableEntity
 
     public ReportType ReportType { get; set; }
 
+    public ReportStatus ReportStatus { get; set; }
+    public string AdminComment  { get; set; }
+
+
+
     public User User { get; set; }
     public long UserId { get; set; }
 
