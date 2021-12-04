@@ -9,5 +9,7 @@ namespace ThreatMap.AirlyAPI.Services
     public interface IAirlyHttpClient
     {
         Task<string> GetData();
+        Task<string> GetMeasuresFromNearestAreaRzeszow();
+        Task<string> GetMeasuresFromSensor(int locationId);
     }
 }

@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ThreatMap.Infrastructure\ThreatMap.Infrastructure.csproj" />
     <ProjectReference Include="..\ThreatMap.Shared.Abstractions\ThreatMap.Shared.Abstractions.csproj" />
     <ProjectReference Include="..\ThreatMap.Shared\ThreatMap.Shared.csproj" />
