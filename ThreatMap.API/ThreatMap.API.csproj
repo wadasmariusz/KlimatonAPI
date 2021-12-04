@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="CsvHelper" Version="27.1.1" />
         <PackageReference Include="IdentityModel" Version="5.1.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0">
             <PrivateAssets>all</PrivateAssets>
@@ -22,6 +23,8 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\ThreatMap.Infrastructure.Public\ThreatMap.Infrastructure.Public.csproj" />
+        <ProjectReference Include="..\ThreatMap.Infrastructure.User\ThreatMap.Infrastructure.User.csproj" />
         <ProjectReference Include="..\ThreatMap.Infrastructure\ThreatMap.Infrastructure.csproj" />
     </ItemGroup>
 

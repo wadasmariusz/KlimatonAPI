@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using ThreatMap.API.Areas.Public.Controllers;
-using ThreatMap.Application.Public.Queries.Sensors.GetSensor;
-using ThreatMap.Application.Public.Queries.Sensors.GetSensorDataList;
-using ThreatMap.Application.Public.Queries.Sensors.GetSensorList;
+using ThreatMap.Application.Public.Sensors.Queries.GetSensor;
+using ThreatMap.Application.Public.Sensors.Queries.GetSensorDataList;
+using ThreatMap.Application.Public.Sensors.Queries.GetSensorList;
 using ThreatMap.Domain.Sensors.Enums;
 using ThreatMap.Domain.ValueObjects;
 

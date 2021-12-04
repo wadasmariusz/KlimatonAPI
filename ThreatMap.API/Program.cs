@@ -11,13 +11,18 @@ using ThreatMap.Application.Shared.Common.Services;
 using ThreatMap.Application.User;
 using ThreatMap.Infrastructure;
 using ThreatMap.Infrastructure.Common.UserServices;
+using ThreatMap.Infrastructure.Public;
+using ThreatMap.Infrastructure.User;
 using ThreatMap.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
 Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(builder.Configuration).CreateLogger();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddControllers(opt => opt.Filters.Add(new ApiExceptionFilterAttribute())).AddFluentValidation();
+builder.Services
+    .AddControllers(opt => opt.Filters.Add(new ApiExceptionFilterAttribute()))
+    .AddFluentValidation()
+    .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 builder.Services.Configure<ApiBehaviorOptions>(opt =>
 {
     //Custom response from ModelValidation
@@ -54,6 +59,8 @@ builder.Services.TryAddScoped(typeof(ICurrentUserService), typeof(CurrentUserSer
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddInfrastructure();
+builder.Services.AddUserInfrastructure();
+builder.Services.AddPublicInfrastructure();
 
 // Pytanie czy dać Application dostęp do tych poniższych i wtedy po prostu użyć jednego wywowałnia AddApplication.
 builder.Services.AddApplication();
