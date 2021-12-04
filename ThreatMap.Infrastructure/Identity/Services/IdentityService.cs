@@ -49,8 +49,8 @@ public class IdentityService : IIdentityService
         var user = await _userManager.FindByEmailAsync(dto.Email) ??
                    throw new NotFoundException($"User with provided email: '{dto.Email}' could not be found.");
 
-        if (user.EmailConfirmed == false && await _userManager.CheckPasswordAsync(user, dto.Password))
-            throw new EmailNotConfirmedException();
+        // if (user.EmailConfirmed == false && await _userManager.CheckPasswordAsync(user, dto.Password))
+        //     throw new EmailNotConfirmedException();
 
 
         var result = await _signInManager.CheckPasswordSignInAsync(user, dto.Password, true);
