@@ -20,6 +20,7 @@ public static class Extensions
         services.AddScoped<IDateService, DateService>();
         services.AddScoped<IInstitutionRepository, InstitutionRepository>();
         services.AddScoped<IReportRepository, ReportRepository>();
+        services.AddScoped<ISensorRepository, SensorRepository>();
 
         return services;
     }

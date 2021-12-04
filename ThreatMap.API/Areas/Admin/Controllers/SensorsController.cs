@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ThreatMap.API.Areas.Public.Controllers;
+using ThreatMap.Application.Admin.Sensors.Commands.CreateSensor;
+using ThreatMap.Application.Admin.Sensors.Commands.ImportSensor;
 using ThreatMap.Application.Public.Sensors.Queries.GetSensorDataList;
 using ThreatMap.Application.Public.Sensors.Queries.GetSensorList;
 using ThreatMap.Domain.Sensors.Enums;
@@ -14,26 +16,11 @@ namespace ThreatMap.API.Areas.Admin.Controllers
         [HttpGet]
         public async Task<ActionResult> GetSensorList([FromQuery] GetSensorListQuery query)
         {
-            //var response = await Mediator.Send(query);
-            //return Ok(response);
-
-            var loc1 = Location.Create(50.0306738, 21.9984216, null);
-            var loc2 = Location.Create(50.0308557, 21.9981833, null);
-            var loc3 = Location.Create(50.0310086, 21.9971134, null);
-            var loc4 = Location.Create(50.0306118, 21.9984206, null);
-
-
-            //MOCK
-            var response = new List<GetSensorListQueryVm>();
-            response.Add(new GetSensorListQueryVm { Category = SensorCategoryE.AirCondition, Description="Sensor przy rzece",  Location= loc1, Name ="Sensor 1000" });
-            response.Add(new GetSensorListQueryVm { Category = SensorCategoryE.Water, Description = "Sensor przy rzece", Location =  loc2, Name = "Sensor 2000" });
-            response.Add(new GetSensorListQueryVm { Category = SensorCategoryE.Other, Description = "Sensor przy rzece", Location =  loc3, Name = "Sensor 3000" });
-            response.Add(new GetSensorListQueryVm { Category = SensorCategoryE.AirCondition, Description = "Sensor przy rzece", Location =  loc4, Name = "Sensor 4000" });
-
+            var response = await Mediator.Send(query);
             return Ok(response);
         }
 
-        [HttpGet("{sensorId}/data")]
+        [HttpGet("{sensorId:long}/data")]
         public async Task<ActionResult> GetSensorDataList([FromQuery] GetSensorDataListQuery query, long sensorId)
         {
             //var response = Mediator.Send(query);
@@ -48,15 +35,20 @@ namespace ThreatMap.API.Areas.Admin.Controllers
 
             return Ok(response);
         }
-
-
-
-        //[HttpPost("create")]
-        //public async Task<ActionResult> CreateSensor([FromBody] CreateSensorCommand command)
-        //{
-        //    var id = await Mediator.Send(command);
-        //    return Ok();
-        //}
+        
+        [HttpPost("create")]
+        public async Task<ActionResult> CreateSensor([FromBody] CreateSensorCommand command)
+        {
+            var id = await Mediator.Send(command);
+            return Ok();
+        }
+        
+        [HttpPost("import")]
+        public async Task<ActionResult> ImportSensor([FromBody] ImportSensorCommand command)
+        {
+            var id = await Mediator.Send(command);
+            return Ok();
+        }
 
         //[HttpPut("{reportId:long}/update")]
         //public async Task<ActionResult> UpdateSensor([FromBody] UpdateSensorCommand command, long reportId)
@@ -73,5 +65,4 @@ namespace ThreatMap.API.Areas.Admin.Controllers
         //    return NoContent();
         //}
     }
-
 }
