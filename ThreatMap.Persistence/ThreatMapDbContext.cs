@@ -4,10 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using ThreatMap.Application.Shared.Common.Services;
 using ThreatMap.Domain;
+using ThreatMap.Domain.Comments.Entities;
 using ThreatMap.Domain.Common.Entities;
 using ThreatMap.Domain.Common.Enums;
 using ThreatMap.Domain.Identity.Entities;
 using ThreatMap.Domain.Institutions.Entities;
+using ThreatMap.Domain.ReportRaises.Entities;
 using ThreatMap.Domain.Reports.Entities;
 using ThreatMap.Domain.Sensors.Entities;
 
@@ -31,6 +33,8 @@ public class ThreatMapDbContext : IdentityDbContext<User, IdentityRole<long>, lo
 
     public DbSet<Report> Reports { get; set; }
     public DbSet<Institution> Institutions { get; set; }
+    public DbSet<Comment> Comments { get; set; }
+    public DbSet<ReportRaise> ReportRaises { get; set; }
     public DbSet<Sensor> Sensors { get; set; }
     public DbSet<SensorData> SensorData { get; set; }
  

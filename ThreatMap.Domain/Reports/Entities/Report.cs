@@ -1,6 +1,7 @@
 ﻿using ThreatMap.Domain.Comments.Entities;
 using ThreatMap.Domain.Common.Entities;
 using ThreatMap.Domain.Identity.Entities;
+using ThreatMap.Domain.ReportRaises.Entities;
 using ThreatMap.Domain.Reports.Enums;
 
 namespace ThreatMap.Domain.Reports.Entities;
@@ -13,15 +14,11 @@ public class Report : AuditableEntity
 
     public ReportType ReportType { get; set; }
 
-    private uint _reportRaise = 0;
-    
     public User User { get; set; }
     public long UserId { get; set; }
 
     public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+    public ICollection<ReportRaise> ReportRaises { get; set; } = new List<ReportRaise>();
 
-    public void RaiseReport()
-    {
-        _reportRaise++;
-    }
+
 }

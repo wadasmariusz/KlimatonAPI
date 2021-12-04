@@ -36,7 +36,10 @@ public class GetReportListQueryHandler : IRequestHandler<GetReportListQuery, Pag
             Description = a.Description,
             Title = a.Title,
             ReportDate = a.ReportDate,
-            UserId = a.UserId
+            UserId = a.UserId,
+            CommentsCount = a.Comments.Count,
+            RaisesCount = a.ReportRaises.Count
+            
         }).PaginatedListAsync(request);
 
         return vm;
