@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ThreatMap.AirlyAPI.Services;
 using ThreatMap.API.Areas.Public.Controllers;
 using ThreatMap.Application.Public.Sensors.Queries.GetSensorDataList;
 using ThreatMap.Application.Public.Sensors.Queries.GetSensorList;
@@ -11,6 +12,12 @@ namespace ThreatMap.API.Areas.Admin.Controllers
     // [ApiAuthorize(Roles = UserRoles.User)]
     public class SensorsController : BaseController
     {
+        private readonly IAirlyHttpClient _iAirlyHttpClient;
+        public SensorsController(IAirlyHttpClient iAirlyHttpClient = null)
+        {
+            _iAirlyHttpClient = iAirlyHttpClient;
+        }
+
         [HttpGet]
         public async Task<ActionResult> GetSensorList([FromQuery] GetSensorListQuery query)
         {
@@ -72,6 +79,16 @@ namespace ThreatMap.API.Areas.Admin.Controllers
         //    await Mediator.Send(new DeleteSensorCommand() { SensorId = reportId });
         //    return NoContent();
         //}
+
+
+        [HttpGet]
+        public async Task<ActionResult> GetSensorList()
+        {
+
+            var response = await _iAirlyHttpClient.GetData();
+            return Ok(response);
+        }
+
     }
 
 }

@@ -2,6 +2,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Serilog;
+using ThreatMap.AirlyAPI;
 using ThreatMap.API.Extensions;
 using ThreatMap.API.Filters;
 using ThreatMap.Application.Admin;
@@ -66,6 +67,7 @@ builder.Services.AddApplication();
 builder.Services.AddApplicationAdmin();
 builder.Services.AddApplicationPublic();
 builder.Services.AddApplicationUser();
+builder.Services.AddAirlyApiPublic();
 
 builder.Services.AddIdentityConfig(builder.Configuration);
 builder.Services.AddSwaggerConfig();

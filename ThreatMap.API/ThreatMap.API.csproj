@@ -23,6 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\ThreatMap.AirlyAPI\ThreatMap.AirlyAPI.csproj" />
         <ProjectReference Include="..\ThreatMap.Infrastructure.Public\ThreatMap.Infrastructure.Public.csproj" />
         <ProjectReference Include="..\ThreatMap.Infrastructure.User\ThreatMap.Infrastructure.User.csproj" />
         <ProjectReference Include="..\ThreatMap.Infrastructure\ThreatMap.Infrastructure.csproj" />
