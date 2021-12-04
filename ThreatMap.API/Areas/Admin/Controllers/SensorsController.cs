@@ -10,9 +10,6 @@ using ThreatMap.Application.Admin.Sensors.Commands.ImportAirPollutionSensorData;
 using ThreatMap.Application.Admin.Sensors.Commands.ImportSensor;
 using ThreatMap.Application.Public.Sensors.Queries.GetSensorDataList;
 using ThreatMap.Application.Public.Sensors.Queries.GetSensorList;
-using ThreatMap.Domain.Identity.Static;
-using ThreatMap.Domain.Sensors.Enums;
-using ThreatMap.Domain.ValueObjects;
 
 namespace ThreatMap.API.Areas.Admin.Controllers
 {
@@ -34,18 +31,10 @@ namespace ThreatMap.API.Areas.Admin.Controllers
         }
 
         [HttpGet("{sensorId:long}/data")]
-        public async Task<ActionResult> GetSensorDataList([FromQuery] GetSensorDataListQuery query, long sensorId)
+        public async Task<ActionResult> GetSensorDataList(long sensorId)
         {
-            //var response = Mediator.Send(query);
-            //return Ok(response);
-
-            //MOCK
-            var response = new List<GetSensorDataListQueryVm>();
-            response.Add(new GetSensorDataListQueryVm { Date = Convert.ToDateTime("2022-09-02 06:00:00"), Humidity = "25%", PM10 = "50%", PM25 = "50%", Sensor = null, Sensorid = 1, Temperature = "19" });
-            response.Add(new GetSensorDataListQueryVm { Date = Convert.ToDateTime("2021-09-02 06:00:00"), Humidity = "25%", PM10 = "50%", PM25 = "50%", Sensor = null, Sensorid = 1, Temperature = "19" });
-            response.Add(new GetSensorDataListQueryVm { Date = Convert.ToDateTime("2020-09-02 06:00:00"), Humidity = "25%", PM10 = "50%", PM25 = "50%", Sensor = null, Sensorid = 1, Temperature = "19" });
-            response.Add(new GetSensorDataListQueryVm { Date = Convert.ToDateTime("2019-09-02 06:00:00"), Humidity = "25%", PM10 = "50%", PM25 = "50%", Sensor = null, Sensorid = 1, Temperature = "19" });
-
+            var query = new GetSensorDataListQuery(){ SensorId = sensorId };
+            var response = Mediator.Send(query);
             return Ok(response);
         }
         

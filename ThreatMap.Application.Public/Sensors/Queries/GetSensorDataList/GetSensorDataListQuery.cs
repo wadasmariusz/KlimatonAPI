@@ -3,10 +3,8 @@ using ThreatMap.Shared.Models;
 
 namespace ThreatMap.Application.Public.Sensors.Queries.GetSensorDataList
 {
-    public class GetSensorDataListQuery : PaginationRequest, IRequest<PaginatedList<GetSensorDataListQueryVm>>
+    public class GetSensorDataListQuery : IRequest<GetSensorDataListQueryVm>
     {
-        public string SearchPhrase { get; set; }
-
-
+        public long SensorId { get; set; }
     }
 }
