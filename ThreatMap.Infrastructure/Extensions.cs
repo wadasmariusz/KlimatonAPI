@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using ThreatMap.Application.Admin.Population.Repositories;
 using ThreatMap.Application.Shared.Common.Identity;
 using ThreatMap.Application.Shared.Common.Services;
 using ThreatMap.Application.Shared.Repositories;
@@ -22,7 +23,8 @@ public static class Extensions
         services.AddScoped<IReportRepository, ReportRepository>();
         services.AddScoped<ISensorRepository, SensorRepository>();
         services.AddScoped<ISensorDataRepository, SensorDataRepository>();
-
+        services.AddScoped<IPopulationRepository, PopulationRepository>();
+        
         return services;
     }
 }

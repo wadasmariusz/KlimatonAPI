@@ -14,14 +14,14 @@ public class ReportsController : BaseController
     }
     
     [HttpGet]
-    public async Task<ActionResult> GetInstitutionList([FromQuery] GetAdminReportListQuery query)
+    public async Task<ActionResult> GetReportList([FromQuery] GetAdminReportListQuery query)
     {
         var response = await Mediator.Send(query);
         return Ok(response);
     }
     
     [HttpPost("import")]
-    public async Task<ActionResult> ImportInstitutionList([FromBody] ImportReportCommand query)
+    public async Task<ActionResult> ImportReportList([FromBody] ImportReportCommand query)
     {
         var response = await Mediator.Send(query);
         return Ok(response);
