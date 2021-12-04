@@ -10,7 +10,7 @@ public enum InstitutionType
     [Display(Name = "Przedszkole")]
     Kindergarten = 1,
     
-    [Display(Name = "Szkoła")]
+    [Display(Name = "Jednostka oświatowa")]
     School = 2,
     
     [Display(Name = "OSP")]

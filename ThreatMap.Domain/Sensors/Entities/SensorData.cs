@@ -9,7 +9,6 @@ namespace ThreatMap.Domain.Sensors.Entities
 {
     public class SensorData : AuditableEntity
     {
-
         public DateTime Date { get; set; }
 
         public long Sensorid { get; set; }
@@ -19,7 +18,6 @@ namespace ThreatMap.Domain.Sensors.Entities
         public string Temperature { get; set; }
         public string PM25 { get; set; }
         public string PM10 { get; set; }
-
-
+        public string PM1 { get; set; }
     }
 }
