@@ -43,6 +43,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreatMap.Admin", "ThreatMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreatMap.AirlyAPI", "ThreatMap.AirlyAPI\ThreatMap.AirlyAPI.csproj", "{335B1CEB-7515-42D2-9039-2CACE42A80ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreatMap.Infrastructure.Admin", "ThreatMap.Infrastructure.Admin\ThreatMap.Infrastructure.Admin.csproj", "{7A9CC52B-5BA2-4B67-BB00-E4349373CB0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{335B1CEB-7515-42D2-9039-2CACE42A80ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{335B1CEB-7515-42D2-9039-2CACE42A80ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{335B1CEB-7515-42D2-9039-2CACE42A80ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A9CC52B-5BA2-4B67-BB00-E4349373CB0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A9CC52B-5BA2-4B67-BB00-E4349373CB0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A9CC52B-5BA2-4B67-BB00-E4349373CB0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A9CC52B-5BA2-4B67-BB00-E4349373CB0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,6 +135,7 @@ Global
 		{BC5A9F17-F6DE-4AA4-952C-35DB2E846253} = {9FECF903-0F85-44C0-839C-6195945E6097}
 		{BF4B7061-BE9B-425A-9F2E-2A0ACC8B5119} = {BC5A9F17-F6DE-4AA4-952C-35DB2E846253}
 		{335B1CEB-7515-42D2-9039-2CACE42A80ED} = {E6FB813A-12DC-4952-A0D1-763E1580D626}
+		{7A9CC52B-5BA2-4B67-BB00-E4349373CB0E} = {A1523377-D22D-4330-8B33-B499C49204FA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A52CDA27-02DD-4B84-A83D-B7F73843CDD4}

@@ -31,15 +31,21 @@ public class GetReportListQueryHandler : IRequestHandler<GetReportListQuery, Pag
             query = query.Where(a => EF.Functions.ILike(a.Description, request.SearchPhrase));
         }
 
-        var vm = await query.Select(a => new GetReportListQueryVm()
+        var vm = await query
+            .Include(q => q.Comments).ThenInclude(q => q.User)
+            .Select(a => new GetReportListQueryVm()
         {
             Description = a.Description,
             Title = a.Title,
             ReportDate = a.ReportDate,
             UserId = a.UserId,
             CommentsCount = a.Comments.Count,
-            RaisesCount = a.ReportRaises.Count
-            
+            RaisesCount = a.ReportRaises.Count,
+            Comments = a.Comments.Select(q => new GetReportListQueryVm.CommentDTO
+            {
+                Content = q.Content,
+                UserFirstName = q.User.FirstName
+            }).ToList()
         }).PaginatedListAsync(request);
 
         return vm;

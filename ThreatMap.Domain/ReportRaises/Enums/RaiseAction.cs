@@ -4,6 +4,5 @@ public enum RaiseAction : short
 {
     Like = 0,
     Heart = 2,
-    Expired =4,
-
+    Expired = 4,
 }

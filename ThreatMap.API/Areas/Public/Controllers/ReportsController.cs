@@ -13,6 +13,4 @@ public class ReportsController : BaseController
         var response = await Mediator.Send(query);
         return Ok(response);
     }
-    
-    
 }

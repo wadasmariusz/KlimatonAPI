@@ -46,10 +46,8 @@ public class ReportsController : BaseController
          var vm = await Mediator.Send(new GetReportCommentListQuery(){ReportId = reportId});
          return Ok(vm);
      }
-     
-     
-    
-    [HttpPost("{reportId:long}/raise")]
+
+     [HttpPost("{reportId:long}/raise")]
     public async Task<ActionResult> RaiseReport([FromBody]RaiseReportCommand command, long reportId)
     {
         command.ReportId = reportId;

@@ -2,6 +2,7 @@
 using ThreatMap.Application.Shared.Common.Services;
 using ThreatMap.Application.Shared.Repositories;
 using ThreatMap.Domain.Reports.Entities;
+using ThreatMap.Domain.Reports.Enums;
 
 namespace ThreatMap.Application.User.Commands.CreateReport;
 
@@ -23,7 +24,8 @@ public class CreateReportCommandHandler : IRequestHandler<CreateReportCommand, l
         {
             Title = request.Title,
             Description = request.Description,
-            ReportDate = request.ReportDate,
+            ReportDate = _dateService.CurrentDate(),
+            ReportStatus = ReportStatus.New,
             UserId = _userService.UserId
         };
 

@@ -53,8 +53,7 @@ public class ImportAirPollutionSensorCommandHandler : IRequestHandler<ImportAirP
             {
                 DateTime time = DateTime.ParseExact(item.Time, "HH:mm:ss", CultureInfo.InvariantCulture);
                 DateTime date = DateTime.ParseExact(item.Date, "dd.MM.yyyy", CultureInfo.InvariantCulture);
-                var saveDate = new DateTime(date.Year, date.Month, date.Day, time.Hour,
-                    time.Minute, time.Second);
+                var saveDate = new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, time.Second);
                 
                 sensorData.Date = DateTime.SpecifyKind(saveDate, DateTimeKind.Utc);
 
