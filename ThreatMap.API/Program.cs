@@ -54,6 +54,8 @@ builder.Services.AddCors(options =>
 // builder.Services.AddSingleton<ICurrentUserService, CurrentUserService>();
 // builder.Services.AddHttpContextAccessor();
 
+builder.Services.AddHttpClient();
+
 builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.TryAddScoped(typeof(ICurrentUserService), typeof(CurrentUserService));

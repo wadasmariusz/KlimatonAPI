@@ -16,7 +16,7 @@ public class GetSensorListQueryHandler : IRequestHandler<GetSensorListQuery, Get
     
     public async Task<GetSensorListQueryVm> Handle(GetSensorListQuery request, CancellationToken cancellationToken)
     {
-        var sensors = await _sensors
+        var sensors = await _sensors.AsNoTracking()
             .Select(q => new GetSensorListQueryVm.SensorDto
             {
                 Id = q.Id,

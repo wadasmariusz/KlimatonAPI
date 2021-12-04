@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Reflection;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using ThreatMap.AirlyAPI.Services;
 
 namespace ThreatMap.AirlyAPI
 {
@@ -14,6 +15,7 @@ namespace ThreatMap.AirlyAPI
         public static IServiceCollection AddAirlyApiPublic(this IServiceCollection services)
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddScoped<IAirlyHttpClient, AirlyHttpClient>();
             return services;
         }
     }
