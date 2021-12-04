@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using ThreatMap.Persistence;
@@ -11,9 +12,10 @@ using ThreatMap.Persistence;
 namespace ThreatMap.Persistence.Migrations
 {
     [DbContext(typeof(ThreatMapDbContext))]
-    partial class ThreatMapDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211204105641_CommentAndRaises")]
+    partial class CommentAndRaises
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -183,7 +185,7 @@ namespace ThreatMap.Persistence.Migrations
                     b.Property<DateTimeOffset?>("LastModifiedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<long>("ReportId")
+                    b.Property<long?>("ReportId")
                         .HasColumnType("bigint");
 
                     b.Property<int>("Status")
@@ -385,9 +387,6 @@ namespace ThreatMap.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("Address")
-                        .HasColumnType("text");
-
                     b.Property<short>("Category")
                         .HasColumnType("smallint");
 
@@ -398,9 +397,6 @@ namespace ThreatMap.Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ExternalId")
                         .HasColumnType("text");
 
                     b.Property<string>("InactivatedBy")
@@ -457,9 +453,6 @@ namespace ThreatMap.Persistence.Migrations
 
                     b.Property<DateTimeOffset?>("LastModifiedDate")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("PM1")
-                        .HasColumnType("text");
 
                     b.Property<string>("PM10")
                         .HasColumnType("text");
@@ -536,19 +529,15 @@ namespace ThreatMap.Persistence.Migrations
 
             modelBuilder.Entity("ThreatMap.Domain.Comments.Entities.Comment", b =>
                 {
-                    b.HasOne("ThreatMap.Domain.Reports.Entities.Report", "Report")
+                    b.HasOne("ThreatMap.Domain.Reports.Entities.Report", null)
                         .WithMany("Comments")
-                        .HasForeignKey("ReportId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ReportId");
 
                     b.HasOne("ThreatMap.Domain.Identity.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Report");
 
                     b.Navigation("User");
                 });

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ThreatMap.API.Areas.Public.Controllers;
 using ThreatMap.API.Attributes;
+using ThreatMap.Application.User.Commands.CommentReport;
 using ThreatMap.Application.User.Commands.CreateReport;
 using ThreatMap.Application.User.Commands.DeleteReport;
 using ThreatMap.Application.User.Commands.UpdateReport;
@@ -11,7 +12,7 @@ using ThreatMap.Domain.Identity.Static;
 namespace ThreatMap.API.Areas.User.Controllers;
 
 [Route("user/reports")]
-// [ApiAuthorize(Roles = UserRoles.User)]
+[ApiAuthorize(Roles = UserRoles.User)]
 public class ReportsController : BaseController
 {
     [HttpGet]
@@ -28,6 +29,21 @@ public class ReportsController : BaseController
         return Ok(response);
     }
     
+     [HttpPost("{reportId:long}/comment")]
+     public async Task<ActionResult> CommentReport([FromBody]CommentReportCommand command, long reportId)
+     {
+         command.ReportId = reportId;
+         await Mediator.Send(command);
+         return Ok();
+     }
+    
+    // [HttpGet("{reportId:long}")]
+    // public async Task<ActionResult> GetReport(long reportId)
+    // {
+    //     var response = await Mediator.Send(new GetReportQuery {ReportId = reportId});
+    //     return Ok(response);
+    // }
+
     [HttpPost("create")]
     public async Task<ActionResult> CreateReport([FromBody]CreateReportCommand command)
     {
