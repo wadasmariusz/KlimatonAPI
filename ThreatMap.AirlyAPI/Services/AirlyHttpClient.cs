@@ -73,7 +73,7 @@ namespace ThreatMap.AirlyAPI.Services
 
 
 
-        public async Task<AirlyRoot> GetMeasuresFromSensor(int locationId)
+        public async Task<string> GetMeasuresFromSensor(int locationId)
         {
             var client = _clientFactory.CreateClient();
             client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
@@ -96,6 +96,7 @@ namespace ThreatMap.AirlyAPI.Services
                 var respObject = JsonConvert.DeserializeObject<AirlyRoot>(jsonString);
             }
 
+            return string.Empty;
         }
 
         public async Task<string> SavaMeasureDataToAsync(AirlyRoot airlyRoot)
