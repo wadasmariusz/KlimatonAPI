@@ -26,7 +26,7 @@ public class CreateSensorListCommandHandler : IRequestHandler<CreateSensorListCo
         foreach (var item in req.Sensors)
         {
             var existSensor = await _sensorRepository.GetByExternalSensorId(item.Id.ToString());
-            if (existSensor != null)
+            if (existSensor == null)
             {
                 var sensor = new Sensor
                 {
