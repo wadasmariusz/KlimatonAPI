@@ -53,8 +53,11 @@ public class ImportAirPollutionSensorCommandHandler : IRequestHandler<ImportAirP
             {
                 DateTime time = DateTime.ParseExact(item.Time, "HH:mm:ss", CultureInfo.InvariantCulture);
                 DateTime date = DateTime.ParseExact(item.Date, "dd.MM.yyyy", CultureInfo.InvariantCulture);
-                sensorData.Date = new DateTime(date.Year, date.Month, date.Day, time.Hour,
+                var saveDate = new DateTime(date.Year, date.Month, date.Day, time.Hour,
                     time.Minute, time.Second);
+                
+                sensorData.Date = DateTime.SpecifyKind(saveDate, DateTimeKind.Utc);
+
             }
             catch (Exception e)
             {
@@ -66,7 +69,7 @@ public class ImportAirPollutionSensorCommandHandler : IRequestHandler<ImportAirP
             {
                 var sensor = new Sensor
                 {
-                    Name = item.Name,
+                    ExternalId = item.Name,
                 };
                 if (!string.IsNullOrWhiteSpace(item.Street))
                 {
