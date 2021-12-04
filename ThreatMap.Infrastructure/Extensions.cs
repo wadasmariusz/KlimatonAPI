@@ -21,6 +21,7 @@ public static class Extensions
         services.AddScoped<IInstitutionRepository, InstitutionRepository>();
         services.AddScoped<IReportRepository, ReportRepository>();
         services.AddScoped<ISensorRepository, SensorRepository>();
+        services.AddScoped<ISensorDataRepository, SensorDataRepository>();
 
         return services;
     }

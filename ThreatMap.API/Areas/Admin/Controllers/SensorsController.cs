@@ -3,11 +3,14 @@ using CsvHelper;
 using Microsoft.AspNetCore.Mvc;
 using ThreatMap.AirlyAPI.Services;
 using ThreatMap.API.Areas.Public.Controllers;
+using ThreatMap.API.Attributes;
 using ThreatMap.Application.Admin.Sensors.Commands.CreateSensor;
 using ThreatMap.Application.Admin.Sensors.Commands.CreateSensorList;
+using ThreatMap.Application.Admin.Sensors.Commands.ImportAirPollutionSensorData;
 using ThreatMap.Application.Admin.Sensors.Commands.ImportSensor;
 using ThreatMap.Application.Public.Sensors.Queries.GetSensorDataList;
 using ThreatMap.Application.Public.Sensors.Queries.GetSensorList;
+using ThreatMap.Domain.Identity.Static;
 using ThreatMap.Domain.Sensors.Enums;
 using ThreatMap.Domain.ValueObjects;
 
@@ -98,6 +101,13 @@ namespace ThreatMap.API.Areas.Admin.Controllers
             {
                 Sensors = records
             };
+            var id = await Mediator.Send(command);
+            return Ok();
+        }
+        
+        [HttpPost("import-measurements")]
+        public async Task<IActionResult> UploadMeasurementList([FromBody] ImportAirPollutionSensorCommand command)
+        {
             var id = await Mediator.Send(command);
             return Ok();
         }

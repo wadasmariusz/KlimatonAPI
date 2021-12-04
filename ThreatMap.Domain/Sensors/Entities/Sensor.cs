@@ -14,5 +14,7 @@ namespace ThreatMap.Domain.Sensors.Entities
         public string Description { get; set; }
         public Location Location { get; set; }
         public Address Address { get; set; }
+
+        public List<SensorData> Measurement { get; set; } = new List<SensorData>();
     }
 }
