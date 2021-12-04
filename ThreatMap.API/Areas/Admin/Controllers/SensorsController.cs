@@ -131,8 +131,9 @@ namespace ThreatMap.API.Areas.Admin.Controllers
         [HttpGet("test")]
         public async Task<ActionResult> GetSensorList()
         {
-            var response = await _iAirlyHttpClient.GetData();
-            return Ok(response);
+            // var response = await _iAirlyHttpClient.GetData();
+            // return Ok(response);
+            return Ok();
         }
     }
 }
