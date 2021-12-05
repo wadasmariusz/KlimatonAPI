@@ -8,7 +8,8 @@ public class GetPublicPopulationListQueryVm
     
     public class PopulationListDto
     {
-        public LocationDto Location { get; set; }
+        public double? Lat { get; set; }
+        public double? Lng { get; set; }
         public int PeopleCount { get; set; }
     }
 }
