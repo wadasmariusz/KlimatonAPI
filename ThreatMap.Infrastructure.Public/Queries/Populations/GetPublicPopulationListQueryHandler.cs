@@ -24,8 +24,8 @@ public class
         var sensors = await _populations.AsNoTracking()
             .Select(q => new GetPublicPopulationListQueryVm.PopulationListDto
             {
-                Lat = q.Location.Latitude,
-                Lng = q.Location.Longitude,
+                Lat = q.Location.Longitude,
+                Lng = q.Location.Latitude,
                 PeopleCount = q.PeopleCount
             })
             .ToListAsync(cancellationToken: cancellationToken);
