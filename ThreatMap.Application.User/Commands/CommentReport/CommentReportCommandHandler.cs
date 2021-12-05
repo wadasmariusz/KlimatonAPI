@@ -6,7 +6,7 @@ using ThreatMap.Domain.Comments.Entities;
 
 namespace ThreatMap.Application.User.Commands.CommentReport;
 
-public class CommentReportCommandHandler : IRequestHandler<CommentReportCommand>
+public class CommentReportCommandHandler : IRequestHandler<CommentUserReportCommand>
 {
     private readonly ICurrentUserService _userService;
     private readonly IReportRepository _reportRepository;
@@ -17,7 +17,7 @@ public class CommentReportCommandHandler : IRequestHandler<CommentReportCommand>
         _reportRepository = reportRepository;
     }
 
-    public async Task<Unit> Handle(CommentReportCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(CommentUserReportCommand request, CancellationToken cancellationToken)
     {
         var report = await _reportRepository.GetAsync(request.ReportId) ??
                      throw new NotFoundException($"Report with requested id: '{request.ReportId}' could not be found.");

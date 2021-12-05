@@ -2,7 +2,7 @@
 
 namespace ThreatMap.Application.User.Commands.CreateReport;
 
-public class CreateReportCommandValidator : AbstractValidator<CreateReportCommand>
+public class CreateReportCommandValidator : AbstractValidator<CreateUserReportCommand>
 {
     public CreateReportCommandValidator()
     {

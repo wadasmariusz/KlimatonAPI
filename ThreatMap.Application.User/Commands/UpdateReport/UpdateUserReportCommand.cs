@@ -2,7 +2,7 @@
 
 namespace ThreatMap.Application.User.Commands.UpdateReport;
 
-public class UpdateReportCommand : IRequest<long>
+public class UpdateUserReportCommand : IRequest<long>
 {
     public long ReportId { get; set; }
     

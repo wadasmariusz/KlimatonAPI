@@ -7,7 +7,7 @@ using ThreatMap.Domain.Reports.Entities;
 
 namespace ThreatMap.Application.User.Commands.UpdateReport;
 
-public class UpdateReportCommandHandler : IRequestHandler<UpdateReportCommand, long>
+public class UpdateReportCommandHandler : IRequestHandler<UpdateUserReportCommand, long>
 {
     private readonly IReportRepository _reportRepository;
 
@@ -17,7 +17,7 @@ public class UpdateReportCommandHandler : IRequestHandler<UpdateReportCommand, l
         _reportRepository = reportRepository;
     }
 
-    public async Task<long> Handle(UpdateReportCommand request, CancellationToken cancellationToken)
+    public async Task<long> Handle(UpdateUserReportCommand request, CancellationToken cancellationToken)
     {
         var report = await _reportRepository.GetAsync(request.ReportId) ??
                      throw new NotFoundException($"Report with requested id '{request.ReportId}' could not be found.");

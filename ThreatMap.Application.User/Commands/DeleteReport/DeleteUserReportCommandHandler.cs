@@ -5,15 +5,15 @@ using ThreatMap.Application.Shared.Repositories;
 
 namespace ThreatMap.Application.User.Commands.DeleteReport;
 
-public class DeleteReportCommandHandler : IRequestHandler<DeleteReportCommand>
+public class DeleteUserReportCommandHandler : IRequestHandler<DeleteUserReportCommand>
 {
     private readonly IReportRepository _reportRepository;
 
-    public DeleteReportCommandHandler(IReportRepository reportRepository)
+    public DeleteUserReportCommandHandler(IReportRepository reportRepository)
     {
         _reportRepository = reportRepository;
     }
-    public async Task<Unit> Handle(DeleteReportCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(DeleteUserReportCommand request, CancellationToken cancellationToken)
     {
         var report = await _reportRepository.GetAsync(request.ReportId) ??
                      throw new NotFoundException($"Report with requested id '{request.ReportId}' could not be found.");

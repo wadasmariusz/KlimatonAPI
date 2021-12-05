@@ -6,7 +6,7 @@ using ThreatMap.Domain.ReportRaises.Entities;
 
 namespace ThreatMap.Application.User.Commands.RaiseReport;
 
-public class RaiseReportCommandHandler : IRequestHandler<RaiseReportCommand>
+public class RaiseReportCommandHandler : IRequestHandler<RaiseUserReportCommand>
 {
     private readonly IReportRepository _reportRepository;
     private readonly ICurrentUserService _currentUserService;
@@ -17,7 +17,7 @@ public class RaiseReportCommandHandler : IRequestHandler<RaiseReportCommand>
         _currentUserService = currentUserService;
     }
 
-    public async Task<Unit> Handle(RaiseReportCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(RaiseUserReportCommand request, CancellationToken cancellationToken)
     {
         var currentUserId = _currentUserService.UserId;
         var report =await _reportRepository.GetAsync(request.ReportId) ??

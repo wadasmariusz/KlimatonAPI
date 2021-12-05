@@ -3,7 +3,7 @@ using ThreatMap.Domain.ReportRaises.Enums;
 
 namespace ThreatMap.Application.User.Commands.RaiseReport;
 
-public class RaiseReportCommand : IRequest
+public class RaiseUserReportCommand : IRequest
 {
     public long ReportId { get; set; }
     

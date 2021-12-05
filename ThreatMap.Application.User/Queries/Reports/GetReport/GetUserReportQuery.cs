@@ -2,7 +2,7 @@
 
 namespace ThreatMap.Application.User.Queries.Reports.GetReport;
 
-public class GetReportQuery : IRequest<GetReportQueryVm>
+public class GetUserReportQuery : IRequest<GetUserReportQueryVm>
 {
     public long ReportId { get; set; }
 }

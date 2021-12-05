@@ -2,7 +2,7 @@
 
 namespace ThreatMap.Application.User.Queries.Reports.GetReportCommentList;
 
-public class GetReportCommentListQueryVm 
+public class GetUserReportCommentListQueryVm 
 {
     public string Content { get; set; }
     public ReportCommentListUserDto User { get; set; }

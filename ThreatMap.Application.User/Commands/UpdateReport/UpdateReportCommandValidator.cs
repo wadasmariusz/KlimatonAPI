@@ -3,7 +3,7 @@ using ThreatMap.Application.User.Commands.CreateReport;
 
 namespace ThreatMap.Application.User.Commands.UpdateReport;
 
-public class UpdateReportCommandValidator : AbstractValidator<UpdateReportCommand>
+public class UpdateReportCommandValidator : AbstractValidator<UpdateUserReportCommand>
 {
     public UpdateReportCommandValidator()
     {

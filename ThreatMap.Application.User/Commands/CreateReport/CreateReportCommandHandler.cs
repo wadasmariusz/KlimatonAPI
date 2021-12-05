@@ -6,7 +6,7 @@ using ThreatMap.Domain.Reports.Enums;
 
 namespace ThreatMap.Application.User.Commands.CreateReport;
 
-public class CreateReportCommandHandler : IRequestHandler<CreateReportCommand, long>
+public class CreateReportCommandHandler : IRequestHandler<CreateUserReportCommand, long>
 {
     private readonly IReportRepository _reportRepository;
     private readonly IDateService _dateService;
@@ -18,7 +18,7 @@ public class CreateReportCommandHandler : IRequestHandler<CreateReportCommand, l
         _dateService = dateService;
         _userService = userService;
     }
-    public async Task<long> Handle(CreateReportCommand request, CancellationToken cancellationToken)
+    public async Task<long> Handle(CreateUserReportCommand request, CancellationToken cancellationToken)
     {
         var report = new Report()
         {

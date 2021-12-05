@@ -3,8 +3,7 @@ using ThreatMap.Shared.Models;
 
 namespace ThreatMap.Application.User.Queries.Reports.GetReportList;
 
-// Tutaj przekazujemy parametry,
-public class GetReportListQuery : PaginationRequest,IRequest<PaginatedList<GetReportListQueryVm>>
+public class GetUserReportListQuery : PaginationRequest,IRequest<PaginatedList<GetUserReportListQueryVm>>
 {
     public string SearchPhrase { get; set; }
 }

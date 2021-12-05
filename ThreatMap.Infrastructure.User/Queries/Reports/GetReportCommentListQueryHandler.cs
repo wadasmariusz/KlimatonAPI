@@ -12,8 +12,8 @@ using ThreatMap.Shared.Models;
 namespace ThreatMap.Infrastructure.User.Queries.Reports;
 
 public class
-    GetReportCommentListQueryHandler : IRequestHandler<GetReportCommentListQuery,
-        PaginatedList<GetReportCommentListQueryVm>>
+    GetReportCommentListQueryHandler : IRequestHandler<GetUserReportCommentListQuery,
+        PaginatedList<GetUserReportCommentListQueryVm>>
 {
     private readonly ICurrentUserService _currentUserService;
     private readonly DbSet<Comment> _comments;
@@ -24,7 +24,7 @@ public class
         _comments = dbContext.Comments;
     }
 
-    public async Task<PaginatedList<GetReportCommentListQueryVm>> Handle(GetReportCommentListQuery request,
+    public async Task<PaginatedList<GetUserReportCommentListQueryVm>> Handle(GetUserReportCommentListQuery request,
         CancellationToken cancellationToken)
     {
         var currentUserId = _currentUserService.UserId;
@@ -32,7 +32,7 @@ public class
         var query = _comments.Where(a =>
             a.ReportId == request.ReportId && a.Status == Status.Active && a.UserId == currentUserId);
 
-        var vm = await query.Select(a => new GetReportCommentListQueryVm()
+        var vm = await query.Select(a => new GetUserReportCommentListQueryVm()
         {
             Content = a.Content,
             CommentDate = a.CreatedDate,

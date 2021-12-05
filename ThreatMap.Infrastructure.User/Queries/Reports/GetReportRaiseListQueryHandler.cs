@@ -14,8 +14,8 @@ using ThreatMap.Shared.Models;
 namespace ThreatMap.Infrastructure.User.Queries.Reports;
 
 public class
-    GetReportRaiseListQueryHandler : IRequestHandler<GetReportRaiseListQuery,
-        PaginatedList<GetReportRaiseListQueryVm>>
+    GetReportRaiseListQueryHandler : IRequestHandler<GetUserReportRaiseListQuery,
+        PaginatedList<GetUserReportRaiseListQueryVm>>
 {
     private readonly ICurrentUserService _currentUserService;
     private readonly DbSet<ReportRaise> _raises;
@@ -26,7 +26,7 @@ public class
         _raises = dbContext.ReportRaises;
     }
 
-    public async Task<PaginatedList<GetReportRaiseListQueryVm>> Handle(GetReportRaiseListQuery request,
+    public async Task<PaginatedList<GetUserReportRaiseListQueryVm>> Handle(GetUserReportRaiseListQuery request,
         CancellationToken cancellationToken)
     {
         var currentUserId = _currentUserService.UserId;
@@ -34,7 +34,7 @@ public class
         var query = _raises.Where(a =>
             a.ReportId == request.ReportId && a.Status == Status.Active && a.UserId == currentUserId);
 
-        var vm = await query.Select(a => new GetReportRaiseListQueryVm()
+        var vm = await query.Select(a => new GetUserReportRaiseListQueryVm()
         {
             User = new ReportRaiseListUserDto()
             {

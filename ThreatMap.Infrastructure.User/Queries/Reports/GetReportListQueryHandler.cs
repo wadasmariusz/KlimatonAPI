@@ -10,7 +10,7 @@ using ThreatMap.Shared.Models;
 
 namespace ThreatMap.Infrastructure.User.Queries.Reports;
 
-public class GetReportListQueryHandler : IRequestHandler<GetReportListQuery, PaginatedList<GetReportListQueryVm>>
+public class GetReportListQueryHandler : IRequestHandler<GetUserReportListQuery, PaginatedList<GetUserReportListQueryVm>>
 {
     private readonly ICurrentUserService _currentUserService;
     private readonly DbSet<Report> _reports;
@@ -21,7 +21,7 @@ public class GetReportListQueryHandler : IRequestHandler<GetReportListQuery, Pag
         _reports = context.Reports;
     }
 
-    public async Task<PaginatedList<GetReportListQueryVm>> Handle(GetReportListQuery request,
+    public async Task<PaginatedList<GetUserReportListQueryVm>> Handle(GetUserReportListQuery request,
         CancellationToken cancellationToken)
     {
         var query = _reports.AsNoTracking();
@@ -31,8 +31,10 @@ public class GetReportListQueryHandler : IRequestHandler<GetReportListQuery, Pag
         }
 
         var vm = await query
+            .Where(q => q.UserId == _currentUserService.UserId)
+            .Include(q => q.User)
             .Include(q => q.Comments).ThenInclude(q => q.User)
-            .Select(a => new GetReportListQueryVm()
+            .Select(a => new GetUserReportListQueryVm()
             {
                 Description = a.Description,
                 Title = a.Title,
@@ -47,7 +49,7 @@ public class GetReportListQueryHandler : IRequestHandler<GetReportListQuery, Pag
                         Lat = a.Location.Latitude,
                         Lng = a.Location.Longitude
                     },
-                Comments = a.Comments.Select(q => new GetReportListQueryVm.CommentDTO
+                Comments = a.Comments.Select(q => new GetUserReportListQueryVm.CommentDTO
                 {
                     Content = q.Content,
                     UserFirstName = q.User.FirstName

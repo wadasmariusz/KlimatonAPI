@@ -4,7 +4,7 @@ using MediatR;
 
 namespace ThreatMap.Application.User.Commands.CommentReport;
 
-public class CommentReportCommandValidator : AbstractValidator<CommentReportCommand>
+public class CommentReportCommandValidator : AbstractValidator<CommentUserReportCommand>
 {
     public CommentReportCommandValidator()
     {

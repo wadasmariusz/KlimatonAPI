@@ -3,7 +3,7 @@ using ThreatMap.Domain.Reports.Entities;
 
 namespace ThreatMap.Application.User.Queries.Reports.GetReportRaiseList;
 
-public class GetReportRaiseListQueryVm
+public class GetUserReportRaiseListQueryVm
 {
     public RaiseAction RaiseAction { get; set; }
 

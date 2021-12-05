@@ -16,10 +16,10 @@ namespace ThreatMap.API.Areas.User.Controllers;
 
 [Route("user/reports")]
 [ApiAuthorize(Roles = UserRoles.User)]
-public class ReportsController : BaseController
+public class UserReportsController : BaseController
 {
     [HttpGet]
-    public async Task<ActionResult> GetReportList([FromQuery]GetReportListQuery query)
+    public async Task<ActionResult> GetReportList([FromQuery]GetUserReportListQuery query)
     {
         var response = await Mediator.Send(query);
         return Ok(response);
@@ -28,12 +28,12 @@ public class ReportsController : BaseController
     [HttpGet("{reportId:long}")]
     public async Task<ActionResult> GetReport(long reportId)
     {
-        var response = await Mediator.Send(new GetReportQuery {ReportId = reportId});
+        var response = await Mediator.Send(new GetUserReportQuery { ReportId = reportId });
         return Ok(response);
     }
     
      [HttpPost("{reportId:long}/comment")]
-     public async Task<ActionResult> CommentReport([FromBody]CommentReportCommand command, long reportId)
+     public async Task<ActionResult> CommentReport([FromBody]CommentUserReportCommand command, long reportId)
      {
          command.ReportId = reportId;
          await Mediator.Send(command);
@@ -43,12 +43,12 @@ public class ReportsController : BaseController
      [HttpGet("{reportId:long}/comment")]
      public async Task<ActionResult> GetReportCommentList(long reportId)
      {
-         var vm = await Mediator.Send(new GetReportCommentListQuery(){ReportId = reportId});
+         var vm = await Mediator.Send(new GetUserReportCommentListQuery(){ReportId = reportId});
          return Ok(vm);
      }
 
      [HttpPost("{reportId:long}/raise")]
-    public async Task<ActionResult> RaiseReport([FromBody]RaiseReportCommand command, long reportId)
+    public async Task<ActionResult> RaiseReport([FromBody]RaiseUserReportCommand command, long reportId)
     {
         command.ReportId = reportId;
         await Mediator.Send(command);
@@ -59,19 +59,19 @@ public class ReportsController : BaseController
     [HttpGet("{reportId:long}/raise")]
     public async Task<ActionResult> GetReportRaiseList(long reportId)
     {
-        var vm = await Mediator.Send(new GetReportRaiseListQuery(){ReportId = reportId});
+        var vm = await Mediator.Send(new GetUserReportRaiseListQuery(){ReportId = reportId});
         return Ok(vm);
     }
 
     [HttpPost("create")]
-    public async Task<ActionResult> CreateReport([FromBody]CreateReportCommand command)
+    public async Task<ActionResult> CreateReport([FromBody]CreateUserReportCommand command)
     {
         await Mediator.Send(command);
         return Ok();
     }
     
     [HttpPut("{reportId:long}/update")]
-    public async Task<ActionResult> UpdateReport([FromBody]UpdateReportCommand command, long reportId)
+    public async Task<ActionResult> UpdateReport([FromBody]UpdateUserReportCommand command, long reportId)
     {
         command.ReportId = reportId;
         await Mediator.Send(command);
@@ -81,7 +81,7 @@ public class ReportsController : BaseController
     [HttpDelete("{reportId:long}/delete")]
     public async Task<ActionResult> DeleteReport(long reportId)
     {
-        await Mediator.Send(new DeleteReportCommand {ReportId = reportId});
+        await Mediator.Send(new DeleteUserReportCommand {ReportId = reportId});
         return NoContent();
     }
 }

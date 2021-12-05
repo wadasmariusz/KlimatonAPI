@@ -3,7 +3,7 @@ using ThreatMap.Shared.Models;
 
 namespace ThreatMap.Application.User.Queries.Reports.GetReportRaiseList;
 
-public class GetReportRaiseListQuery : PaginationRequest, IRequest<PaginatedList<GetReportRaiseListQueryVm>>
+public class GetUserReportRaiseListQuery : PaginationRequest, IRequest<PaginatedList<GetUserReportRaiseListQueryVm>>
 {
     public long ReportId { get; set; }
 }
