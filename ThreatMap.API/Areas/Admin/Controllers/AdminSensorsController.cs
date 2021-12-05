@@ -10,15 +10,16 @@ using ThreatMap.Application.Admin.Sensors.Commands.ImportAirPollutionSensorData;
 using ThreatMap.Application.Admin.Sensors.Commands.ImportSensor;
 using ThreatMap.Application.Public.Sensors.Queries.GetSensorDataList;
 using ThreatMap.Application.Public.Sensors.Queries.GetSensorList;
+using ThreatMap.Domain.Identity.Static;
 
 namespace ThreatMap.API.Areas.Admin.Controllers
 {
     [Route("admin/sensors")]
-    // [ApiAuthorize(Roles = UserRoles.User)]
-    public class SensorsController : BaseController
+    [ApiAuthorize(Roles = UserRoles.CityAdmin)]
+    public class AdminSensorsController : BaseController
     {
         private readonly IAirlyHttpClient _iAirlyHttpClient;
-        public SensorsController(IAirlyHttpClient iAirlyHttpClient = null)
+        public AdminSensorsController(IAirlyHttpClient iAirlyHttpClient = null)
         {
             _iAirlyHttpClient = iAirlyHttpClient;
         }

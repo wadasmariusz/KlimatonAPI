@@ -6,7 +6,7 @@
                 <a class="navbar-brand" asp-controller="Home" asp-action="Index">
                     <div class="brand-logo">
                         @* <img style="width: 100px" src="~/images/logo_small_white.png" /> *@
-                        <h3 class="text-light"> ThreatMap</h3>
+                        <h3 class="text-light">Panel Admina</h3>
                     </div>
                 </a>
             </li>
@@ -29,16 +29,48 @@
             </li>
 
             <li class=" navigation-header">
+                <span>Dane</span>
+            </li>
+
+            <li class=" nav-item">
+                <a href="@Url.Action("ViewSensorList", "Sensors")">
+                    <i class="fa fa-tags"></i><span class="menu-title">Sensory</span>
+                </a>
+            </li>
+
+            <li class=" nav-item">
+                <a href="@Url.Action("ViewReportList", "Report")">
+                    <i class="fa fa-file-text"></i><span class="menu-title">Zgłoszenia</span>
+                </a>
+            </li>
+
+            <li class=" nav-item">
+                <a href="@Url.Action("ViewWaterFacilityList", "WaterFacilities")">
+                    <i class="fa fa-object-group"></i><span class="menu-title">Obiekty wodne</span>
+                </a>
+            </li>
+
+            <li class=" navigation-header">
                 <span>Zarządzanie</span>
             </li>
-            
-            
 
-            @* <li class=" nav-item"> *@
-            @*     <a href="@Url.Action("ViewServerLogs", "A_ServerLogs")"> *@
-            @*         <i class="fa fa-cogs"></i><span class="menu-title">Logi serwera</span> *@
-            @*     </a> *@
-            @* </li> *@
+            <li class=" nav-item">
+                <a href="@Url.Action("ViewCityList", "Cities")">
+                    <i class="fa fa-building"></i><span class="menu-title">Miasta</span>
+                </a>
+            </li>
+
+            <li class=" nav-item">
+                <a href="@Url.Action("ViewUserList", "Users")">
+                    <i class="fa fa-users"></i><span class="menu-title">Użytkownicy</span>
+                </a>
+            </li>
+
+            <li class=" nav-item">
+                <a href="@Url.Action("ViewServerLogs", "ServerLogs")">
+                    <i class="fa fa-cogs"></i><span class="menu-title">Logi serwera</span>
+                </a>
+            </li>
             @* <li class=" nav-item"> *@
             @*     <a href="@Url.Action("ViewLogs", "A_Logs")"> *@
             @*         <i class="fa fa-cogs"></i><span class="menu-title">Logi (stare)</span> *@

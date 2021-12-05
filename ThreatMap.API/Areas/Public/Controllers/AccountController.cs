@@ -95,6 +95,7 @@ public class AccountController : BaseController
         List<string> roles = new List<string>()
         {
             UserRoles.Admin,
+            UserRoles.CityAdmin,
             UserRoles.User,
             UserRoles.Dev,
         };

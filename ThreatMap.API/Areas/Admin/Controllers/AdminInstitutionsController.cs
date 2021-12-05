@@ -2,14 +2,17 @@ using System.Globalization;
 using CsvHelper;
 using Microsoft.AspNetCore.Mvc;
 using ThreatMap.API.Areas.Public.Controllers;
+using ThreatMap.API.Attributes;
 using ThreatMap.Application.Admin.Institutions.Commands.CreateInstitution;
 using ThreatMap.Application.Admin.Institutions.Commands.ImportInstitution;
 using ThreatMap.Application.Public.Institutions.Queries.GetInstitutionsList;
+using ThreatMap.Domain.Identity.Static;
 
 namespace ThreatMap.API.Areas.Admin.Controllers;
 
 [Route("admin/institutions")]
-public class InstitutionsController : BaseController
+[ApiAuthorize(Roles = UserRoles.CityAdmin)]
+public class AdminInstitutionsController : BaseController
 {
     [HttpGet]
     public async Task<ActionResult> GetInstitutionList([FromQuery] GetInstitutionListQuery query)

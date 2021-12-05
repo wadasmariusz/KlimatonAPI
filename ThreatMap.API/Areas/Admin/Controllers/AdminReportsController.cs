@@ -1,15 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using ThreatMap.API.Areas.Public.Controllers;
+using ThreatMap.API.Attributes;
 using ThreatMap.Application.Admin.Reports.Commands;
 using ThreatMap.Application.Admin.Reports.GetReportList.Queries;
+using ThreatMap.Domain.Identity.Static;
 
 namespace ThreatMap.API.Areas.Admin.Controllers;
 
 [Route("admin/reports")]
-// [ApiAuthorize(Roles = UserRoles.User)]
-public class ReportsController : BaseController
+[ApiAuthorize(Roles = UserRoles.CityAdmin)]
+public class AdminReportsController : BaseController
 {
-    public ReportsController()
+    public AdminReportsController()
     {
     }
     

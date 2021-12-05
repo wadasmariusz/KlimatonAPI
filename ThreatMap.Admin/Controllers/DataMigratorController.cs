@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ThreatMap.Persistence;
 
-namespace ThreatMap.API.Areas.Public.Controllers;
+namespace ThreatMap.Admin.Controllers;
 
 [Route("admin/db-migrate")]
 public class DataMigratorController : Controller
