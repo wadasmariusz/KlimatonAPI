@@ -31,7 +31,7 @@ public class GetReportListQueryHandler : IRequestHandler<GetUserReportListQuery,
         }
 
         var vm = await query
-            .Where(q => q.UserId == _currentUserService.UserId)
+            // .Where(q => q.UserId == _currentUserService.UserId)
             .Include(q => q.User)
             .Include(q => q.Comments).ThenInclude(q => q.User)
             .Select(a => new GetUserReportListQueryVm()

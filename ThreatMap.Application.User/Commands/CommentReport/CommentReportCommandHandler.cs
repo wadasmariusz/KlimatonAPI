@@ -21,9 +21,11 @@ public class CommentReportCommandHandler : IRequestHandler<CommentUserReportComm
     {
         var report = await _reportRepository.GetAsync(request.ReportId) ??
                      throw new NotFoundException($"Report with requested id: '{request.ReportId}' could not be found.");
-
-
+        
+        //TODO: MockedData
         var currentUserId = _userService.UserId;
+        if (currentUserId == null || currentUserId == 0)
+            currentUserId = 5;
         var comment = new Comment()
         {
             Content = request.Content,

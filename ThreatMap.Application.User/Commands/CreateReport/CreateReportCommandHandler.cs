@@ -20,13 +20,19 @@ public class CreateReportCommandHandler : IRequestHandler<CreateUserReportComman
     }
     public async Task<long> Handle(CreateUserReportCommand request, CancellationToken cancellationToken)
     {
+        
+        //TODO: MockedData
+        var currentUserId = _userService.UserId;
+        if (currentUserId == null || currentUserId == 0)
+            currentUserId = 5;
+        
         var report = new Report()
         {
             Title = request.Title,
             Description = request.Description,
             ReportDate = _dateService.CurrentDate(),
             ReportStatus = ReportStatus.New,
-            UserId = _userService.UserId
+            UserId = currentUserId
         };
 
         await _reportRepository.CreateAsync(report);

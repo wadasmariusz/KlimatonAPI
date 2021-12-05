@@ -15,7 +15,7 @@ using ThreatMap.Domain.Identity.Static;
 namespace ThreatMap.API.Areas.User.Controllers;
 
 [Route("user/reports")]
-[ApiAuthorize(Roles = UserRoles.User)]
+// [ApiAuthorize(Roles = UserRoles.User)]
 public class UserReportsController : BaseController
 {
     [HttpGet]

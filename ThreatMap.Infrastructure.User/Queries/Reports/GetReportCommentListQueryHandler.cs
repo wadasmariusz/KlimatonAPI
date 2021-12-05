@@ -27,7 +27,10 @@ public class
     public async Task<PaginatedList<GetUserReportCommentListQueryVm>> Handle(GetUserReportCommentListQuery request,
         CancellationToken cancellationToken)
     {
+        //TODO: MockedData
         var currentUserId = _currentUserService.UserId;
+        if (currentUserId == null || currentUserId == 0)
+            currentUserId = 5;
 
         var query = _comments.Where(a =>
             a.ReportId == request.ReportId && a.Status == Status.Active && a.UserId == currentUserId);
