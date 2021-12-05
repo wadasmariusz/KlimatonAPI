@@ -6,7 +6,7 @@ namespace ThreatMap.API.Areas.Admin.Controllers
 {
     [Route("admin/populations")]
     // [ApiAuthorize(Roles = UserRoles.User)]
-    public class PopulationsController : BaseController
+    public class AdminPopulationsController : BaseController
     {
         [HttpPost("import-population")]
         public async Task<IActionResult> UploadPopulationList([FromBody] ImportPopulationCommand command)
@@ -14,9 +14,5 @@ namespace ThreatMap.API.Areas.Admin.Controllers
             var id = await Mediator.Send(command);
             return Ok();
         }
-
-
-
-        
     }
 }

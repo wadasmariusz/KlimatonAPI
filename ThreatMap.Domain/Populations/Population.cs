@@ -16,6 +16,5 @@ namespace ThreatMap.Domain.Populations
         public string Address { get; set; }
 
         public Location Location  { get; set; }
-
-}
+    }
 }
