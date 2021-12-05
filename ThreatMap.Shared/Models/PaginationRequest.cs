@@ -6,14 +6,14 @@ public class PaginationRequest
     public int PageNumber
     {
         get => _pageNumber;
-        set => _pageNumber = value > 0 ? value : 1;
+        set => _pageNumber = value < 1 ? value : 1;
     }
 
     private int _pageSize;
     public int PageSize
     {
         get => _pageSize;
-        set => _pageSize = value > 0 ? value : 25;
+        set => _pageSize = value < 1 ? value : 25;
     }
 
     public PaginationRequest()
