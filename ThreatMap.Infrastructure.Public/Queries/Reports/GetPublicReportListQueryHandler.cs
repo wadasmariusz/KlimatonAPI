@@ -36,7 +36,8 @@ public class GetPublicReportListQueryHandler : IRequestHandler<GetPublicReportLi
             Title = a.Title,
             ReportDate = a.ReportDate,
             UserId = a.UserId
-        }).PaginatedListAsync(request);
+        }).OrderByDescending(q => q.ReportDate)
+            .PaginatedListAsync(request);
 
         return vm;
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ThreatMap.API.Areas.Public.Controllers;
 using ThreatMap.API.Attributes;
 using ThreatMap.Application.User.Commands.CommentReport;
@@ -15,7 +16,8 @@ using ThreatMap.Domain.Identity.Static;
 namespace ThreatMap.API.Areas.User.Controllers;
 
 [Route("user/reports")]
-// [ApiAuthorize(Roles = UserRoles.User)]
+[ApiAuthorize(Roles = UserRoles.User)]
+[AllowAnonymous]
 public class UserReportsController : BaseController
 {
     [HttpGet]
